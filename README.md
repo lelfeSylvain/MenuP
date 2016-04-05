@@ -1,2 +1,2 @@
 # MenuPdo
-V2 du menu du self en pdo et MVC
+La nouvelle version du menu du self en PDO et MVC

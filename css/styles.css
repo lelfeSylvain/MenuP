@@ -1,0 +1,122 @@
+/* 
+    Created on : 19 mars 2016, 17:45:43
+    Author     : sylvain
+*/
+
+/************************************************************************
+Police de caractères spécifiques
+************************************************************************/
+/* @font-face kit by Fonts2u (http://www.fonts2u.com) */ 
+@font-face {
+font-family:"Rock Salt";
+src:url("font/RockSalt.eot?") format("eot"),url("font/RockSalt.woff") format("woff"),url("font/RockSalt.ttf") format("truetype"),url("font/RockSalt.svg#RockSalt") format("svg");
+font-weight:normal;
+font-style:normal;
+}
+
+/************************************************************************
+ Style général
+ ************************************************************************/
+
+body {
+  margin : 0 ;
+  background-color : #333;
+  color: chocolate; 
+  font-family:  "Arial", "Trebuchet MS";
+}
+
+footer {
+    font-size : 0.8em;
+    text-align: center;
+}
+
+
+
+header {
+    
+    font-size : 1.4em;
+    font-weight: bold;
+    padding-bottom: 3px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-variant-caps:  petite-caps;
+}
+
+/************************************************************************
+affichage du menu
+ ************************************************************************/
+section.menu {
+    width: 90%;
+    height: 80%;
+   margin-left : 5%;
+   margin-right: 5%;
+    display : flex;
+    flex-direction : column;
+    justify-content: space-around;
+}
+
+.unecase {   
+    margin: 0px 5px 0px 5px;
+    padding: 5px ;    
+    background-color:  grey;
+    color:  black;   
+    border-radius:5px;
+}
+.jour{
+    color: #DD0;
+    font-weight: bold;
+    text-decoration: none;
+   /*text-decoration-color: -moz-use-text-color;
+    text-decoration-line: none;text-shadow: 00px 0px 05px #000;
+    text-decoration-style: solid;*/
+    width: 150px;
+    
+    font-family: "Rock Salt",arial,serif;
+    font-size:20px;
+    text-align: center;
+}
+
+.midisoir {
+   background-color: lightgoldenrodyellow; 
+   width: 40%;
+   color: chocolate; 
+       
+}
+.soirsoir {
+    width: 60%;
+}
+
+.midimatin {
+   background-color: lightgoldenrodyellow; 
+   width: 60%;
+   color: chocolate; 
+       
+}
+.soirmatin {
+    width: 40%;
+}
+
+.selection {
+    font-size : 1.4em;
+    min-width: 200px;
+    
+    border: 5px outset #000000;
+    
+}
+
+.ligneMenu {
+    display : flex;
+    flex-direction : row;
+    justify-content: space-around;
+    padding: 5px ;
+    margin: 10px;
+} 
+
+/************************************************************************
+navigation du menu
+ ************************************************************************/
+nav {
+    display : flex;
+    flex-direction : row;
+    justify-content: space-between;
+}

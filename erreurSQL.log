@@ -1,0 +1,10 @@
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=1
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=2
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=3
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=4
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=5
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=6
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=7
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=8
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=9
+2016-04-04 17:45:51 select * from menu2_repas where numsema=14 and annee=2016 and numserv=10
