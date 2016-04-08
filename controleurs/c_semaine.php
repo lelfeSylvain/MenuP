@@ -1,5 +1,6 @@
 <?php
-
+require_once  'inc/class.Semaine.php';
+require_once  'vues/class.V_Repas.php';
 // quel jour sommes-nous ?
 if (empty($_POST['date'])) {
     $m = new DateTime();
@@ -9,18 +10,14 @@ if (empty($_POST['date'])) {
     $maDate = $_POST['date'];
 }
 $num = $_REQUEST['num'];
-//effacer à partir d'ici
-// ici on initialise pour des tests
-// TODO en fin de projet effacer tout le else
-// $maDate ="2015-10-01";
-
-// effacer jusque là
 
 $maSem = new Semaine($maDate);
 $jour = $maSem->getLundi();
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 9; $i++) {
     $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i + 1)));
 }
+//gestion du vendredi soir
+$LesMenus[$i] = new V_Repas(new Repas("vendredi"));
 $estMatin = "matin";
 $selection=11;
 if ($num === "actuelle") {// on consulte le menu de la semaine actuelle

@@ -17,6 +17,8 @@ class Repas {
     public function __construct($unRepas) {
         $communique = true;
         if (!empty($unRepas)) {
+			if ($unRepas=="vendredi") { $this->gestionVendredi();}
+			else {
             $this->num = $unRepas['numserv'];
             $this->image = $unRepas['urlimage'];
             //est-ce un message ?
@@ -33,7 +35,7 @@ class Repas {
                 $this->type = Repas::$TYPEREPAS;
             } else {// problème dans le type du message ou repas vide
                 $communique = false;
-            }
+            }}
         }
         else {// problème dans le type du message ou repas vide
                 $communique = false;
@@ -45,6 +47,12 @@ class Repas {
         }
     }
 
+	private function gestionVendredi(){
+		$this->ligne[0] = "Bon week-end";
+        $this->ligne[2] = "";
+		$this->type = Repas::$TYPEMESSAGE;
+	}
+	
     private function estVide($unRepas) {
         $trouve = true;
         if (!empty($unRepas)) {

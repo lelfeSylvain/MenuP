@@ -122,15 +122,6 @@ class PDOMenu {
         return $result;
     }
     
-    /** renvoie les informations sur un utilisateur
-     * 
-     */
-    public function getInfoUtil($login){
-        $sql="select * from ".PdoMenu::$prefixe."user where pseudo='".$login."'";
-        $this->logSQL($sql);
-        $rs = PdoMenu::$monPdo->query($sql);
-        $result= $rs->fetch();
-        return $result;
-    }
+
     
 }

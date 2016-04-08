@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/styles.css" media="all">
 	</head>
 	<body>
-		<header id="header" role="banner" class="line txtcenter mal pas">
+		<header id="header" role="banner" class="line titre">
 			Menu du self
 		</header>
                 

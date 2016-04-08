@@ -1,11 +1,5 @@
 <?php 
-    require_once  'inc/class.Session.php'; 
-    Session::init();
-    require_once 'inc/class.PDOMenu.php'; 
-    include 'vues/v_entete.php';
-    // constantes 
-    define("EOL","<br />\n");// fin de ligne html et saut de ligne
-    define("EL","\n");//  saut de ligne 
+    require_once  'inc/fonctions.php';
     
     if (isset($_POST['login']) && isset($_POST['password'])) {
         $pdo = PDOMenu::getPdoMenu();

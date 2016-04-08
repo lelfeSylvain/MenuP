@@ -1,4 +1,8 @@
 <?php
+/****** Affichage de l'entete *********/
+echo "<section class='menu'>".EL."<header class='titre'>".EL;
+echo "Semaine n° ".$maSem->getNumsem()." du lundi ".$maSem->getLundi()->format('d/m/Y')." au vendredi ".$maSem->getVendredi()->format('d/m/Y');
+echo "</header>".EL;
 /****** Affichage des boutons *********/
 echo "<nav>".EL;
 // précédent 
@@ -19,10 +23,7 @@ if (! $num == "actuelle") {
     echo "\t</form>\n</div>".EL;
 
 echo "</nav>".EL;
-/****** Affichage de l'entete *********/
-echo "<section class='menu'>".EL."<header>".EL;
-echo "Semaine n° ".$maSem->getNumsem()." du lundi ".$maSem->getLundi()->format('d/m/Y')." au vendredi ".$maSem->getVendredi()->format('d/m/Y');
-echo "</header>".EL;
+
 for ($i=0;$i<10;$i++ ){// debut boucle des repas
     if ($i % 2==0) {
         $bg="midi".$estMatin;
