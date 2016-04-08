@@ -16,8 +16,6 @@ $jour = $maSem->getLundi();
 for ($i = 0; $i < 9; $i++) {
     $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i + 1)));
 }
-//gestion du vendredi soir
-$LesMenus[$i] = new V_Repas(new Repas("vendredi"));
 $estMatin = "matin";
 $selection=11;
 if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
@@ -26,7 +24,7 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
     $maintenant = new DateTime();
     $h = $maintenant->format("H");
     // Quel jour sommes-nous ? 1 : lundi, 5 : vendredi
-    // x2 => 2 : lundi soir, 10 : vendredi soir
+    // *2 => 2 : lundi soir, 10 : vendredi soir
     $j = $maintenant->format("N") * 2;
     if ($h > 13) {
         $estMatin = "soir";
@@ -48,5 +46,8 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
     // Service à mettre en valeur 
     $selection = $j;
 }
+//gestion du vendredi soir
+$LesMenus[9] = new V_Repas(new Repas("vendredi"));
+
 include 'vues/v_semaine.php';
 ?>
