@@ -1,25 +1,24 @@
 <?php
-
+require_once  'inc/class.Semaine.php';
+require_once  'vues/class.V_Repas.php';
 // quel jour sommes-nous ?
 if (empty($_POST['date'])) {
     $m = new DateTime();
     $maDate = $m->format("Y-m-d");
     unset($m);
 } else {
-    $maDate = $_POST['date'];
+    $maDate = clean($_POST['date']);
 }
-$num = $_REQUEST['num'];
-//effacer à partir d'ici
-// ici on initialise pour des tests
-// TODO en fin de projet effacer tout le else
-// $maDate ="2015-10-01";
-
-// effacer jusque là
+if (isset($_REQUEST['num'])) {
+    $num = clean($_REQUEST['num']);
+} else {
+    $num = "";
+}
 
 $maSem = new Semaine($maDate);
 $jour = $maSem->getLundi();
-for ($i = 0; $i < 10; $i++) {
-    $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i + 1)));
+for ($i = 0; $i < 9; $i++) {
+    $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i )),  $jour, isset($_SESSION['pseudo']));
 }
 $estMatin = "matin";
 $selection=11;
@@ -29,7 +28,7 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
     $maintenant = new DateTime();
     $h = $maintenant->format("H");
     // Quel jour sommes-nous ? 1 : lundi, 5 : vendredi
-    // x2 => 2 : lundi soir, 10 : vendredi soir
+    // *2 => 2 : lundi soir, 10 : vendredi soir
     $j = $maintenant->format("N") * 2;
     if ($h > 13) {
         $estMatin = "soir";
@@ -45,11 +44,14 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
         $estMatin = "matin";
         $jour = $maSem->getLundi();
         for ($i = 0; $i < 10; $i++) {
-            $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i + 1)));
+            $LesMenus[$i] = new V_Repas(new Repas($pdo->getLeRepas($maSem, $i )), $jour, isset($_SESSION['pseudo']));
         }
     }
     // Service à mettre en valeur 
     $selection = $j;
 }
+//gestion du vendredi soir
+$LesMenus[9] = new V_Repas(new Repas("vendredi"), $jour, false);
+
 include 'vues/v_semaine.php';
-?>
+

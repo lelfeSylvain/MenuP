@@ -109,4 +109,16 @@ class Semaine {
     public function getSemaineDerniere(){
         return new Semaine($this->getDateSemaineDerniere());
     } 
+    
+    public function getDateService($numserv) {
+        $tabJour = array("lundi ", "mardi ", "mercredi ", "jeudi ", "vendredi ");
+        $tabMois = array("janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre");
+        $day=$numserv/2;
+        $rep=$tabJour[$day];
+        $aujourdhui = clone $this->lundi;
+        $aujourdhui->modify("+".$day." days");
+        $service="soir";
+        if ($numserv % 2 ===0) $service="midi";
+        return $rep.$aujourdhui->format(" d ").$tabMois[$aujourdhui->format("m")-1].$aujourdhui->format(" Y ").$service;
+    }
 }

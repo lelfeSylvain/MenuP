@@ -31,7 +31,7 @@ class PDOMenu {
 	PdoMenu::$monPdo = new PDO(PdoMenu::$serveur.';'.PdoMenu::$bdd, PdoMenu::$user, PdoMenu::$mdp); 
         PdoMenu::$monPdo->query("SET CHARACTER SET utf8");
         // initialise le fichier log
-        $this->monLog = new MakeLog("erreurSQL","./","w");
+        $this->monLog = new MakeLog("erreurSQL","./","a");
             
     }
     public function __destruct(){
@@ -62,10 +62,14 @@ class PDOMenu {
      * @return type toutes les informations sur un utilisateur
      */
     public function getInfoUtil($name){
-        $sql="select num, pseudo,  mdp,  tsDerniereCx from ".PdoMenu::$prefixe."user where pseudo='".$name."'";
+        //$sql="select num, pseudo,  mdp,  tsDerniereCx from ".PdoMenu::$prefixe."user where pseudo='".$name."'";
+        $sql="select num, pseudo,  mdp,  tsDerniereCx from ".PdoMenu::$prefixe."user where pseudo= ?";
+        $sth=PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($name));
         $this->logSQL($sql);
-        $rs = PdoMenu::$monPdo->query($sql);
-        $ligne = $rs->fetch();
+        //$rs = PdoMenu::$monPdo->query($sql);
+        
+        $ligne = $sth->fetch();
         return $ligne;    
     }
     
@@ -75,9 +79,12 @@ class PDOMenu {
      */
     public function setDerniereCx($num){
         $date = new DateTime();
-        $sql="update ".PdoMenu::$prefixe."util set tsDerniereCx ='".$date->format('Y-m-d H:i:s')."' where num=".$num;
+        //$sql="update ".PdoMenu::$prefixe."util set tsDerniereCx ='".$date->format('Y-m-d H:i:s')."' where num=".$num;
+        $sql="update ".PdoMenu::$prefixe."util set tsDerniereCx = ? where num= ?";
+        $sth=PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($date->format('Y-m-d H:i:s'),$num));
         $this->logSQL($sql);
-        $rs =  PdoMenu::$monPdo->exec($sql);
+        //$rs =  PdoMenu::$monPdo->exec($sql);
     }
     
     /** insère un nouvel utilisateur dans la base
@@ -88,8 +95,10 @@ class PDOMenu {
     public function setNouveauUtil($pseudo,$mdp){
         $sql="insert into ".PdoMenu::$prefixe."util (pseudo, mdp) values ('".$pseudo."','".$mdp."')";
         $this->logSQL($sql);
-        $rs =  PdoMenu::$monPdo->exec($sql);
-        return $rs;
+        $sql="insert into ".PdoMenu::$prefixe."util (pseudo, mdp) values (?,?)";
+        $sth=PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($pseudo,$mdp));
+        return $sth;
     }
 	
     /** renvoie tous les menus d'une semaine passée en paramètre dans un tableau 
@@ -100,37 +109,67 @@ class PDOMenu {
             if (get_class($uneSem)==="Semaine"){
                 $sql="select * from ".PdoMenu::$prefixe."repas where numsema=".$uneSem->getNumsem()." and annee=".$uneSem->getAnnee()." order by numserv";
                 $this->logSQL($sql);
-                $rs = PdoMenu::$monPdo->query($sql);
-                $result= $rs->fetchAll();
+                $sql="select * from ".PdoMenu::$prefixe."repas where numsema=? and annee=? order by numserv";
+                $sth=PdoMenu::$monPdo->prepare($sql);
+                $sth->execute(array($uneSem->getNumsem(),$uneSem->getAnnee()));
+                $result= $sth->fetchAll();
             }
         }
         return $result;
     }
   
     /** renvoie le menu d'un repas d'une semaine passée en paramètre dans un tableau 
-     * 
+     * $uneSem : la semaine de type Semaine
+     * $numServ : le service dans la semaine
      */
-    public function getLeRepas($uneSem,$num){
+    public function getLeRepas($uneSem,$numserv){
         if (is_object($uneSem)) {
             if (get_class($uneSem)==="Semaine"){
-                $sql="select * from ".PdoMenu::$prefixe."repas where numsema=".$uneSem->getNumsem()." and annee=".$uneSem->getAnnee()." and numserv=".$num;
+                $sql="select * from ".PdoMenu::$prefixe."repas where numsema=".$uneSem->getNumsem()." and annee=".$uneSem->getAnnee()." and numserv=".$numserv;
                 $this->logSQL($sql);
-                $rs = PdoMenu::$monPdo->query($sql);
-                $result= $rs->fetch();
+                $sql="select * from ".PdoMenu::$prefixe."repas where numsema= ? and annee=? and numserv=?";
+                $sth=PdoMenu::$monPdo->prepare($sql);
+                $sth->execute(array($uneSem->getNumsem(),$uneSem->getAnnee(),$numserv));
+                $result= $sth->fetch();
             }
         }
         return $result;
     }
     
-    /** renvoie les informations sur un utilisateur
-     * 
+    /** enregistre le menu d'un repas $repas
+     * $repas : le repas de type Repas
+     * $uneSem : la semaine de type Semaine
+     * $numServ : le service dans la semaine
      */
-    public function getInfoUtil($login){
-        $sql="select * from ".PdoMenu::$prefixe."user where pseudo='".$login."'";
-        $this->logSQL($sql);
-        $rs = PdoMenu::$monPdo->query($sql);
-        $result= $rs->fetch();
+    public function setLeRepas($uneSem,$numServ, $repas){
+        $result = false;
+        if (is_object($uneSem) && is_object($repas)) {
+            if (get_class($uneSem)==="Semaine" && get_class($repas)==="Repas" ){
+                // on efface l'ancien repas
+                $this->delLeRepas($uneSem, $numServ);
+                $sql="insert into ".PdoMenu::$prefixe."repas (titm, ent1, plat, lait, des1, type, annee, numsema, numserv) values ('";
+                $sql .= $repas->getTitre()."','".$repas->getEnt()."','".$repas->getPlat()."','".$repas->getLait()."','".$repas->getDes()."','".$repas->getTypeCase()."',";
+                $sql .= $uneSem->getAnnee().",".$uneSem->getNumsem().",".($numServ).")";
+                $this->logSQL($sql);
+                $sql="insert into ".PdoMenu::$prefixe."repas (titm, ent1, plat, lait, des1, type, annee, numsema, numserv) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sth=PdoMenu::$monPdo->prepare($sql);
+                $sth->execute(array($repas->getTitre(),$repas->getEnt(),$repas->getPlat(),$repas->getLait(),$repas->getDes(),$repas->getTypeCase(),$uneSem->getAnnee(),$uneSem->getNumsem(),$numServ));
+                $result = $sth;                
+            }
+        }
         return $result;
+    }
+    /** efface le repas de la BD
+     * $uneSem : la semaine de type Semaine
+     * $numServ : le service dans la semaine
+     */
+    private function delLeRepas($uneSem,$numServ){
+        $sql="delete from ".PdoMenu::$prefixe."repas where numsema=".$uneSem->getNumsem()." and annee=".$uneSem->getAnnee()." and numserv=".$numServ;
+        $this->logSQL($sql);
+        $sql="delete from ".PdoMenu::$prefixe."repas where numsema=? and annee=? and numserv=?";
+        $sth=PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($uneSem->getNumsem(),$uneSem->getAnnee(),$numserv));
+        return $sth;
     }
     
 }
