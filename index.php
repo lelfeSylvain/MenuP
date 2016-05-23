@@ -29,7 +29,7 @@ elseif (!Session::isLogged()) {
 
     // justement on enregistre la dernière activité de l'utilisateur dans la BD
     $pdo->setDerniereCx($_SESSION['numUtil']);
-
+echo $uc.EOL;
     // gère le fil d'ariane : TODO à gérer
     //include_once 'controleurs/c_ariane.php';
     //aiguillage principal
@@ -42,9 +42,13 @@ elseif (!Session::isLogged()) {
                 include("controleurs/c_creation.php");
                 break;
             }
+
+        case 'convertir': {// conversion de la base
+                include("controleurs/c_conversion.php");
+                break;
+            }
         default :  // par défaut on consulte les posts
             include("controleurs/c_lecture.php");
     }
 }
 include("vues/v_pied.php");
- 

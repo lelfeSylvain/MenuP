@@ -29,9 +29,9 @@ elseif ($codeAction==='v') {//validation d'un repas
     if ($repas[6] === "message") {
         $repas[0] = clean($_POST["mes1"]);
         $repas[2] = clean($_POST["mes2"]);
-        $repas[6] = Repas::$TYPEMESSAGE;
+        $repas[6] = Repas::TYPEMESSAGE;
     } else {
-        $repas[6] = Repas::$TYPEREPAS;
+        $repas[6] = Repas::TYPEREPAS;
     }
     $monRepas= new Repas($repas,"saisi");
     /* pour les tests

@@ -16,8 +16,6 @@ $_SESSION['debug'] = "hidden";
 //$_SESSION['debug']="text";
 // instanciation de la fabrique de vue
 $vue = FabriqueVue::getFabrique();
-// instanciation du modèle PDO
-$pdo = PDOMenu::getPdoMenu();
 
 //print_r ($_REQUEST);
 

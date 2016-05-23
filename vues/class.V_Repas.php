@@ -74,7 +74,7 @@ class V_Repas {
      */
 
     public function afficherRepas($bg, $i) {
-        if ($this->getRepas()->getTypeCase() === Repas::$TYPEREPAS) {
+        if ($this->getRepas()->getTypeCase() === Repas::TYPEREPAS) {
             ?>
             <section class='unecase <?php echo $bg; ?>' id='r<?php echo $i; ?>'>
                 <header>

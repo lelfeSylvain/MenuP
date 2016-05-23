@@ -13,6 +13,8 @@ class MakeLog {
     private $msgErreur;
     private $CRLF="\r\n";
     private $format="Y-m-d H:i:s ";
+    const APPEND = "a";
+    const WRITE = "w";
 /**
  * Constructeur 
  * un fichier log ouvert en mode "a" cumule les messages d'une éxécution sur l'autre
@@ -22,7 +24,7 @@ class MakeLog {
  * @param $mode : par défaut en mode 'a'ppend, peut être en mode re'w'rite
  * @param $msgErreur : affiche un préfixe au log pour distinguer la ligne en cas d'erreur
  */				
-    public function __construct($name,$path="./",$mode="a",$msgErreur="### ERREUR"){
+    public function __construct($name,$path="./log/",$mode="a",$msgErreur="### ERREUR"){
 	$this->filename=$name;
         if (substr($path,-1)==='/') $this->path = $path;
         else $this->path = $path.'/';
@@ -30,7 +32,9 @@ class MakeLog {
         $this->mode=$mode;
         $this->msgErreur=$msgErreur;
         // initialise le fichier log
-        fopen($this->fullname,  $this->mode);    
+        fopen($this->fullname,  $this->mode); 
+        chmod($this->fullname, 0777);
+        
     }
     // destructeur
     public function __destruct(){

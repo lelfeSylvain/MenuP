@@ -11,36 +11,38 @@ class Repas {
     // ligne 0 => Titre, 1 entrées ou rien, 2 plat ou message, 3 laitage, 4 desserts
     private $ligne;
     private $num, $type, $image, $estCommunique;
-    public static $TYPEMESSAGE = "message";
-    public static $TYPEREPAS = "repas";
 
-    public function __construct($unRepas,$mode="lu") {
-        if ($mode==='saisi') {
+    const TYPEMESSAGE = "message";
+    const TYPEREPAS = "repas";
+
+    public function __construct($unRepas, $mode = "lu") {
+        if ($mode === 'saisi') {
             $this->construireSaisi($unRepas);
-        }
-        else {
+        } else {
             $this->construireLu($unRepas);
         }
     }
-    
+
     /*
      * Constructeur interne  à partir d'une saisi
      */
-    private function construireSaisi($unRepas){ 
-        $this->estCommunique=true;
+
+    private function construireSaisi($unRepas) {
+        $this->estCommunique = true;
         $this->num = $unRepas[5];
         $this->type = $unRepas[6];
         $this->image = $unRepas[7];
-        for ($i=0;$i<5;$i++) {
+        for ($i = 0; $i < 5; $i++) {
             $this->ligne[$i] = $unRepas[$i];
         }
     }
-    
+
     /*
      * Constructeur interne  à partir de la BD
      */
-    private function construireLu($unRepas){        
-        $this->estCommunique=true;
+
+    private function construireLu($unRepas) {
+        $this->estCommunique = true;
         if (!empty($unRepas)) {
             if ($unRepas == "vendredi") {
                 $this->gestionVendredi();
@@ -48,17 +50,17 @@ class Repas {
                 $this->num = $unRepas['numserv'];
                 $this->image = $unRepas['urlimage'];
                 //est-ce un message ?
-                if ($unRepas['type'] === Repas::$TYPEMESSAGE) {
+                if ($unRepas['type'] === self::TYPEMESSAGE) {
                     $this->ligne[0] = $unRepas['titm'];
                     $this->ligne[2] = $unRepas['plat'];
-                    $this->type = Repas::$TYPEMESSAGE;
-                } elseif ($unRepas['type'] === Repas::$TYPEREPAS and ! $this->estVide($unRepas)) {
+                    $this->type = self::TYPEMESSAGE;
+                } elseif ($unRepas['type'] === self::TYPEREPAS and ! $this->estVide($unRepas)) {
                     $this->ligne[0] = $unRepas['titm'];
                     $this->ligne[1] = $this->format($unRepas, 1, 3);
                     $this->ligne[2] = $unRepas['plat'];
                     $this->ligne[3] = $unRepas['lait'];
                     $this->ligne[4] = $this->format($unRepas, 5, 8);
-                    $this->type = Repas::$TYPEREPAS;
+                    $this->type = self::TYPEREPAS;
                 } else {// problème dans le type du message ou repas vide
                     $this->estCommunique = false;
                 }
@@ -68,7 +70,7 @@ class Repas {
         }
         if (!$this->estCommunique) {
             //$this->estCommunique==false;
-            $this->type = Repas::$TYPEMESSAGE;
+            $this->type = self::TYPEMESSAGE;
             $this->ligne[0] = "Le menu n'a pas été communiqué";
             $this->ligne[2] = "Revenez plus tard";
         }
@@ -77,7 +79,7 @@ class Repas {
     private function gestionVendredi() {
         $this->ligne[0] = "Bon week-end";
         $this->ligne[2] = "";
-        $this->type = Repas::$TYPEMESSAGE;
+        $this->type = self::TYPEMESSAGE;
     }
 
     private function estVide($unRepas) {
@@ -94,13 +96,17 @@ class Repas {
     public function estCommunique() {
         return $this->estCommunique;
     }
-    
-    public function estMessage(){
-        return $this->type === Repas::$TYPEMESSAGE;
+
+    public function estMessage() {
+        return $this->type === self::TYPEMESSAGE;
     }
-    
+
     public function getTitre() {
-        return $this->ligne[0];
+        if (isset($this->ligne[0])) {
+            return $this->ligne[0];
+        } else {
+            return "";
+        }
     }
 
     public function getNum() {
@@ -108,15 +114,27 @@ class Repas {
     }
 
     public function getPlat() {
-        return $this->ligne[2];
+        if (isset($this->ligne[2])) {
+            return $this->ligne[2];
+        } else {
+            return "";
+        }
     }
 
     public function getLait() {
-        return $this->ligne[3];
+        if (isset($this->ligne[3])) {
+            return $this->ligne[3];
+        } else {
+            return "";
+        }
     }
 
     public function getEnt() {
-        return $this->ligne[1];
+        if (isset($this->ligne[1])) {
+            return $this->ligne[1];
+        } else {
+            return "";
+        }
     }
 
     // permet de concaténer les entrees ou les desserts facilement
@@ -135,15 +153,27 @@ class Repas {
     }
 
     public function getDes() {
-        return $this->ligne[4];
+        if (isset($this->ligne[4])) {
+            return $this->ligne[4];
+        } else {
+            return "";
+        }
     }
 
     public function getTitreMes() {
-        return $this->ligne[0];
+        if (isset($this->ligne[0])) {
+            return $this->ligne[0];
+        } else {
+            return "";
+        }
     }
 
     public function getMes() {
-        return $this->ligne[2];
+        if (isset($this->ligne[2])) {
+            return $this->ligne[2];
+        } else {
+            return "";
+        }
     }
 
     public function getLignes() {
@@ -156,7 +186,11 @@ class Repas {
 
     public function getLigne($i) {
         if ($i < 5 and $i > 0) {
-            return $this->ligne[$i];
+            if (isset($this->ligne[$i])) {
+                return $this->ligne[$i];
+            } else {
+                return "";
+            }
         } else {
             return $this->ligne[0];
         }
