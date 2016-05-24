@@ -104,6 +104,21 @@ section.menu {
     width: 40%;
 }
 
+.midisaisi {
+   background-color: lightgoldenrodyellow; 
+   width: 40%;
+   color: chocolate; 
+   font-size : 1.4em;
+    min-width: 200px; 
+    margin:  5px ;
+}
+.soirsaisi {
+    width: 40%;
+    font-size : 1.4em;
+    min-width: 200px;
+    margin: 5px;
+}
+
 .selection {
     font-size : 1.4em;
     min-width: 200px;
@@ -120,6 +135,63 @@ section.menu {
     margin: 10px;
 } 
 
+.dateFormulaireSaisie {
+    font-size : 1.4em;
+    margin: 5px 5px 0px 5px;
+}
+
+.formulaireSaisie {
+    display : flex;
+    flex-direction : column;
+    justify-content: flex-start;
+    padding: 5px ;
+    margin: 10px;
+}
+
+.formulaireBouton {
+    display : flex;
+    flex-direction : column;
+    justify-content: flex-start;
+}
+
+.formulaireLesChamps {
+    display : flex;
+    flex-direction : column;
+    justify-content:  center;
+}
+.formulaireLigneChamp {
+    display : flex;
+    flex-direction : row;    
+    justify-content: flex-start;
+    padding: 5px ;
+}
+.formulaireLigneRadio {
+    display : flex;
+    flex-direction : row;    
+    justify-content: flex-start;
+    padding: 5px ;
+}
+.formulaireColonneLibelle {
+    display : flex;
+    flex-direction : column;    
+    justify-content:  flex-end;
+    padding: 0px 5px 5px  5px ;
+}
+
+.palibel{
+    padding-bottom: 8px; 
+    margin:  0px 5px 0px 15px;
+    width: 70px;
+}
+.palibel2{
+    padding-bottom: 8px; 
+    margin:  0px 5px 0px 15px;
+    width: 120px;
+}
+
+.pachamp{
+    margin-bottom: 8px;
+}
 /************************************************************************
 navigation du menu
  ************************************************************************/

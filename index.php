@@ -14,7 +14,7 @@ if (!isset($_REQUEST['uc'])) {//s'il n'y a pas d'uc alors on consulte le menu
     if (isset($_REQUEST['num'])) {
         $num = clean($_REQUEST['num']);
     } else {
-        $num = "";
+        $num = "actuelle";
     }
 }
 if ($uc === 'login') {
@@ -29,7 +29,7 @@ elseif (!Session::isLogged()) {
 
     // justement on enregistre la dernière activité de l'utilisateur dans la BD
     $pdo->setDerniereCx($_SESSION['numUtil']);
-echo $uc.EOL;
+//echo $uc.EOL;
     // gère le fil d'ariane : TODO à gérer
     //include_once 'controleurs/c_ariane.php';
     //aiguillage principal

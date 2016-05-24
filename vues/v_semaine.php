@@ -6,7 +6,7 @@ echo "</header>".EL;
 /****** Affichage des boutons *********/
 echo "<nav>".EL;
 // précédent 
-    echo "<div class='boutons'>\n\t<form action='index.php?uc=lecture&num=0' method='post'>".EL;
+    echo "<div class='boutons'>\n\t<form action='index.php?uc=lecture&num=precedent' method='post'>".EL;
     echo "\t\t<input type='".$_SESSION['debug']."' name='date' value='".$maSem->getDateSemaineDerniere()."'>".EL;
     echo "\t\t<input type='submit' value='<- Semaine Précédente'>".EL;
     echo "\t</form>\n</div>".EL;
@@ -18,7 +18,7 @@ if ( $num !== "actuelle") {
     echo "\t</form>\n</div>".EL;
 }
 // suivant
-    echo "<div class='boutons'>\n\t<form action='index.php?uc=lecture&num=1' method='post'>".EL;
+    echo "<div class='boutons'>\n\t<form action='index.php?uc=lecture&num=suivant' method='post'>".EL;
     echo "\t\t<input type='".$_SESSION['debug']."' name='date' value='".$maSem->getDateSemaineProchaine()."'>".EL;
     echo "\t\t<input type='submit' value='Semaine Suivante ->'>".EL;
     echo "\t</form>\n</div>".EL;
@@ -41,7 +41,7 @@ for ($i=0;$i<10;$i++ ){// debut boucle des repas
         $jour->modify("+1 day");
 
     }
-    if ($i+1===$selection) $bg.=' selection';
+    if ($i+1===$numservSelectionne) $bg.=' selection';
     $LesMenus[$i]->afficherRepas($bg,$i);
     
     if ($i % 2==1) {
