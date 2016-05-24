@@ -8,10 +8,10 @@ Police de caractères spécifiques
 ************************************************************************/
 /* @font-face kit by Fonts2u (http://www.fonts2u.com) */ 
 @font-face {
-font-family:"Rock Salt";
-src:url("font/RockSalt.eot?") format("eot"),url("font/RockSalt.woff") format("woff"),url("font/RockSalt.ttf") format("truetype"),url("font/RockSalt.svg#RockSalt") format("svg");
-font-weight:normal;
-font-style:normal;
+    font-family:"Rock Salt";
+    src:url("font/RockSalt.eot?") format("eot"),url("font/RockSalt.woff") format("woff"),url("font/RockSalt.ttf") format("truetype"),url("font/RockSalt.svg#RockSalt") format("svg");
+    font-weight:normal;
+    font-style:normal;
 }
 
 /************************************************************************
@@ -19,10 +19,10 @@ font-style:normal;
  ************************************************************************/
 
 body {
-  margin : 0 ;
-  background-color : #333;
-  color: chocolate; 
-  font-family:  "Arial", "Trebuchet MS";
+    margin : 0 ;
+    background-color : #333;
+    color: chocolate; 
+    font-family:  "Arial", "Trebuchet MS";
 }
 
 footer {
@@ -46,10 +46,10 @@ header.titre {
 }
 
 a:link {
-	color : SandyBrown;
+    color : SandyBrown;
 }
 a:visited {
-	color : SaddleBrown;
+    color : SaddleBrown;
 }
 /************************************************************************
 affichage du menu
@@ -57,8 +57,8 @@ affichage du menu
 section.menu {
     width: 90%;
     height: 80%;
-   margin-left : 5%;
-   margin-right: 5%;
+    margin-left : 5%;
+    margin-right: 5%;
     display : flex;
     flex-direction : column;
     justify-content: space-around;
@@ -70,14 +70,15 @@ section.menu {
     background-color:  grey;
     color:  black;   
     border-radius:5px;
+
 }
 .jour{
     color: #DD0;
     font-weight: bold;
     text-decoration: none;
-   /*text-decoration-color: -moz-use-text-color;
-    text-decoration-line: none;text-shadow: 00px 0px 05px #000;
-    text-decoration-style: solid;*/
+    /*text-decoration-color: -moz-use-text-color;
+     text-decoration-line: none;text-shadow: 00px 0px 05px #000;
+     text-decoration-style: solid;*/
     width: 150px;
     font-family: "Rock Salt",arial,serif;
     font-size:20px;
@@ -85,30 +86,40 @@ section.menu {
 }
 
 .midisoir {
-   background-color: lightgoldenrodyellow; 
-   width: 40%;
-   color: chocolate; 
-       
+    background-color: lightgoldenrodyellow; 
+    width: 40%;
+    color: chocolate; 
+    background-repeat:no-repeat;
+    background-image : url(../images/sun2.png);
+    background-position:110% 100%;
 }
 .soirsoir {
     width: 60%;
+    background-repeat:no-repeat;
+    background-image : url(../images/moon.png);
+    background-position:102% 50%;
 }
 
 .midimatin {
-   background-color: lightgoldenrodyellow; 
-   width: 60%;
-   color: chocolate; 
-       
+    background-color: lightgoldenrodyellow; 
+    width: 60%;
+    color: chocolate; 
+    background-repeat:no-repeat;
+    background-image : url(../images/sun.png);
+    background-position:110% 90%;
 }
 .soirmatin {
     width: 40%;
+    background-repeat:no-repeat;
+    background-image : url(../images/moon2.png);
+    background-position:102% 50%;
 }
 
 .midisaisi {
-   background-color: lightgoldenrodyellow; 
-   width: 40%;
-   color: chocolate; 
-   font-size : 1.4em;
+    background-color: lightgoldenrodyellow; 
+    width: 40%;
+    color: chocolate; 
+    font-size : 1.4em;
     min-width: 200px; 
     margin:  5px ;
 }
@@ -122,9 +133,9 @@ section.menu {
 .selection {
     font-size : 1.4em;
     min-width: 200px;
-    
+
     border: 5px outset #000000;
-    
+
 }
 
 .ligneMenu {
@@ -146,9 +157,11 @@ section.menu {
     justify-content: flex-start;
     padding: 5px ;
     margin: 10px;
+    width: 80%;
+    height: 80%;
 }
 
-.formulaireBouton {
+.formulaireBoutonRadio {
     display : flex;
     flex-direction : column;
     justify-content: flex-start;
@@ -158,6 +171,7 @@ section.menu {
     display : flex;
     flex-direction : column;
     justify-content:  center;
+    margin-left: 80px;
 }
 .formulaireLigneChamp {
     display : flex;
@@ -178,6 +192,23 @@ section.menu {
     padding: 0px 5px 5px  5px ;
 }
 
+.formulaireBoutonValidation{
+    display : flex;
+    flex-direction :row;
+    justify-content:    flex-end;
+    width: 60%;
+    margin :30px;
+    height: 30px;
+}
+
+.formulaireLogin {
+    min-height : 400px;
+    display : flex;
+    flex-direction : column; 
+    justify-content:center;
+
+}
+
 .palibel{
     padding-bottom: 8px; 
     margin:  0px 5px 0px 15px;
@@ -191,6 +222,14 @@ section.menu {
 
 .pachamp{
     margin-bottom: 8px;
+}
+
+.boutonValidation {
+    margin: 0px 30px 0px 30px;
+}
+
+.boutonConnexion {
+    margin-left: 10px;
 }
 /************************************************************************
 navigation du menu

@@ -52,7 +52,7 @@ class V_Repas {
 
         // ********************************* les champs **************************
         ?>
-        <section class='formulaireBouton'>
+        <section class='formulaireBoutonRAdio'>
             <div class='formulaireLigneRadio'>
                 <input type = "radio" name = "message" value = "repas"  <?php echo $chkmenu; ?> />
                 <p class="palibel"> Repas</p>
@@ -82,24 +82,29 @@ class V_Repas {
             </div>
         </div>
         </section>
-        <section class='formulaireBouton'>
+        <section class='formulaireBoutonRadio'>
             <div class='formulaireLigneRadio'>
                 <input type = "radio" name = "message" value = "message"  <?php echo $chkmess; ?> /> 
                 <p class="palibel2">Message</p>
             </div>
-            <div class='formulaireLigneChamp'>
-                <p class="palibel2">Texte principal :</p>
-                <input type="text" size="120" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
-            </div>
-            <div class='formulaireLigneChamp'>
-                <p class="palibel2">Commentaire :</p>
-                <input type="text" size="120" name="mes2" placeholder="un complément d'information" value="<?php echo $message; ?>">
+            <div class='formulaireLesChamps'>
+
+                <div class='formulaireLigneChamp'>
+                    <p class="palibel2">Texte principal :</p>
+                    <input type="text" size="114" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
+                </div>
+                <div class='formulaireLigneChamp'>
+                    <p class="palibel2">Commentaire :</p>
+                    <input type="text" size="114" name="mes2" placeholder="un complément d'information" value="<?php echo $message; ?>">
+                </div>
             </div>
         </section>
 
         <?php // *************************les boutons ****************************** ?>
-        <input type="reset" class="boutonsinserer" value="Effacer"/>
-        <input type="submit" class="boutonsinserer" value="<?php echo $txtbtn; ?>"/>
+<section class="formulaireBoutonValidation">
+        <input type="reset" value="Effacer" class="boutonValidation"/>
+        <input type="submit"  value="<?php echo $txtbtn; ?>" class="boutonValidation"/>
+</section>
         <?php
     }
 
