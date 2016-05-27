@@ -19,7 +19,7 @@ class V_Repas {
     }
 
     public function afficherFormulaireRepas() {
-        // par défaut c'est vide
+// par défaut c'est vide
         $titre = '';
         $plat = '';
         $entree = '';
@@ -50,7 +50,7 @@ class V_Repas {
             $plat = '';
         }
 
-        // ********************************* les champs **************************
+// ********************************* les champs **************************
         ?>
         <section class='formulaireBoutonRAdio'>
             <div class='formulaireLigneRadio'>
@@ -100,11 +100,11 @@ class V_Repas {
             </div>
         </section>
 
-        <?php // *************************les boutons ****************************** ?>
-<section class="formulaireBoutonValidation">
-        <input type="reset" value="Effacer" class="boutonValidation"/>
-        <input type="submit"  value="<?php echo $txtbtn; ?>" class="boutonValidation"/>
-</section>
+        <!-- *************************les boutons ****************************** -->
+        <section class="formulaireBoutonValidation">
+            <input type="reset" value="Effacer" class="boutonValidation"/>
+            <input type="submit"  value="<?php echo $txtbtn; ?>" class="boutonValidation"/>
+        </section>
         <?php
     }
 
@@ -115,48 +115,53 @@ class V_Repas {
      */
 
     public function afficherRepas($bg, $i) {
-        if ($this->getRepas()->getTypeCase() === Repas::TYPEREPAS) {
-            ?>
-            <section class='unecase <?php echo $bg; ?>' id='r<?php echo $i; ?>'>
-                <header>
-                    <?php echo $this->getRepas()->getTitre() . EL; ?>
-                </header>
-                <section class='repas' >   
-                    <div class='entree'>
-                        <?php echo $this->getRepas()->getLigne(1) . EL; ?>
-                    </div>
-                    <div class='plat'>
-                        <?php echo $this->getRepas()->getLigne(2) . EL; ?>
-                    </div>
-                    <div class='lait'>
-                        <?php echo $this->getRepas()->getLigne(3) . EL; ?>
-                    </div>
-                    <div class='dessert'>
-                        <?php echo $this->getRepas()->getLigne(4) . EL; ?>
-                    </div>
-                    <?php
-                    $this->afficheBouton($this->estConnecte, $this->unRepas->estCommunique(), $this->semaine->format('Y-m-d'), $i);
+        ?>
+        <section class='unecase <?php echo $bg; ?>' num-case='<?php echo $i; ?>'>
+            <div class="boite">
+
+                <?php
+                if ($this->getRepas()->getTypeCase() === Repas::TYPEREPAS) {
                     ?>
-                </section>
-            </section>
-            <?php
-        } else {
-            ?>
-            <section class='unecase <?php echo $bg; ?>' id='r<?php echo $i; ?>'>
-                <header>
-                    <?php echo $this->getRepas()->getTitre() . EL; ?>
-                </header>
-                <section class='repas' >   
-                    <div class='plat'>
-                        <?php echo $this->getRepas()->getLigne(2) . EL; ?>
-                    </div>
+
+                    <section class='repas' >   
+                        <header>
+                            <?php echo $this->getRepas()->getTitre() . EL; ?>
+                        </header>
+                        <div class='entree'>
+                            <?php echo $this->getRepas()->getLigne(1) . EL; ?>
+                        </div>
+                        <div class='plat'>
+                            <?php echo $this->getRepas()->getLigne(2) . EL; ?>
+                        </div>
+                        <div class='lait'>
+                            <?php echo $this->getRepas()->getLigne(3) . EL; ?>
+                        </div>
+                        <div class='dessert'>
+                            <?php echo $this->getRepas()->getLigne(4) . EL; ?>
+                        </div>
+
+                    </section>
                     <?php
-                    $this->afficheBouton($this->estConnecte, $this->unRepas->estCommunique(), $this->semaine->format('Y-m-d'), $i);
+                } else {
                     ?>
-                </section>
-            </section>
-            <?php
-        }
+
+                    <section class='message' >   
+                        <header>
+                            <?php echo $this->getRepas()->getTitre() . EL; ?>
+                        </header>
+                        <div class='commentaire'>
+                            <?php echo $this->getRepas()->getLigne(2) . EL; ?>
+                        </div>
+
+                    </section>
+
+                <?php
+                }
+                $this->afficheBouton($this->estConnecte, $this->unRepas->estCommunique(), $this->semaine->format('Y-m-d'), $i);
+                ?>
+            </div>
+        </section>
+        <?php
     }
 
     /*
@@ -173,7 +178,7 @@ class V_Repas {
                 $num = "f";
             }
             ?>
-            <form method="post" action="index.php?uc=ecrire&num=<?php echo $num . $jour . $i; ?>" name='btnrepas<?php echo $i; ?>'>
+            <form method="post" class="formulaireBoutonRepas" action="index.php?uc=ecrire&num=<?php echo $num . $jour . $i; ?>" name='btnrepas<?php echo $i; ?>'>
                 <input type="submit" value="<?php echo $txtbtn; ?>" >
             </form>
             <?php

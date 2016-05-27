@@ -30,10 +30,10 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
     // *2 => 2 : lundi soir, 10 : vendredi soir, 14 : dimanche soir
     $numservSelectionne = $maintenant->format("N") * 2;
     if ($h > 13) {// à partir de 14h on s'interesse au repas du soir
-        $estMatin = "soir";
+        $estMatin = " tantot";
     } else {
         // si on pointe sur le matin on est sur le service du midi
-        $estMatin = "matin";
+        $estMatin = " matin";
         $numservSelectionne--;
     }
     // mais on peut être le week-end aussi (sauf si on se promène dans les menus)
@@ -41,10 +41,10 @@ if ($num === "actuelle") {// on consulte le menu de la semaine actuelle
         $numservSelectionne = 1;
         $maintenant->modify("Monday"); // on passe au lundi suivant
         $maDate = $maintenant->format("Y-m-d");
-        $estMatin = "matin";
+        $estMatin = " matin";
     }
 } else {
-    $estMatin = "matin";
+    $estMatin = " matin";
     $numservSelectionne = 11;
 }
 // on récupère dans la BD les services de la semaine et on créé des instances de V_Repas (classe qui affiche les repas).

@@ -19,18 +19,19 @@ Police de caractères spécifiques
  ************************************************************************/
 
 body {
-    margin : 0 ;
+    margin : 0 10% 0 10%;
     background-color : #333;
     color: chocolate; 
     font-family:  "Arial", "Trebuchet MS";
+    width: 80%;
+    min-height: 800px;
+    min-width: 800px;
 }
 
 footer {
     font-size : 0.8em;
     text-align: center;
 }
-
-
 
 header {
     font-size : 1.4em;
@@ -55,14 +56,20 @@ a:visited {
 affichage du menu
  ************************************************************************/
 section.menu {
-    width: 90%;
+    
     height: 80%;
-    margin-left : 5%;
-    margin-right: 5%;
     display : flex;
     flex-direction : column;
     justify-content: space-around;
 }
+
+.ligneMenu {
+    display : flex;
+    flex-direction : row;
+    justify-content: space-around;
+    padding: 5px ;
+    margin: 10px;
+} 
 
 .unecase {   
     margin: 0px 5px 0px 5px;
@@ -70,8 +77,14 @@ section.menu {
     background-color:  grey;
     color:  black;   
     border-radius:5px;
-
+    height: 120px;
+    word-wrap: break-word;
 }
+
+.unecase ::first-letter {
+     text-transform: capitalize;
+}
+
 .jour{
     color: #DD0;
     font-weight: bold;
@@ -85,22 +98,22 @@ section.menu {
     text-align: center;
 }
 
-.midisoir {
+.midi.tantot {
     background-color: lightgoldenrodyellow; 
     width: 40%;
     color: chocolate; 
     background-repeat:no-repeat;
     background-image : url(../images/sun2.png);
-    background-position:110% 100%;
+    background-position:115% -120%;
 }
-.soirsoir {
+.soir.tantot {
     width: 60%;
     background-repeat:no-repeat;
-    background-image : url(../images/moon.png);
-    background-position:102% 50%;
+    background-image : url(../images/moon1.png);
+    background-position:108% 50%;
 }
 
-.midimatin {
+.midi.matin {
     background-color: lightgoldenrodyellow; 
     width: 60%;
     color: chocolate; 
@@ -108,44 +121,63 @@ section.menu {
     background-image : url(../images/sun.png);
     background-position:110% 90%;
 }
-.soirmatin {
+.soir.matin {
     width: 40%;
     background-repeat:no-repeat;
     background-image : url(../images/moon2.png);
     background-position:102% 50%;
 }
 
-.midisaisi {
+.midi.saisi {
     background-color: lightgoldenrodyellow; 
-    width: 40%;
+ 
     color: chocolate; 
-    font-size : 1.4em;
-    min-width: 200px; 
-    margin:  5px ;
+
 }
-.soirsaisi {
+.saisi {
     width: 40%;
-    font-size : 1.4em;
-    min-width: 200px;
+    
     margin: 5px;
 }
 
 .selection {
     font-size : 1.4em;
-    min-width: 200px;
-
-    border: 5px outset #000000;
-
+    height: 120px;
 }
 
-.ligneMenu {
-    display : flex;
-    flex-direction : row;
-    justify-content: space-around;
-    padding: 5px ;
-    margin: 10px;
-} 
+.selection.tantot{
+    background-color: #dadada ; 
+}
 
+.selection.matin{
+    background-color:  aqua ; 
+    color:  maroon; 
+}
+
+.message {
+    margin-top: 20px;
+    text-align: center;
+    font-size : 1.4em;
+}
+
+/* style des affichages des textes des repas */
+.repas {
+    
+}
+
+/* ne fonctionne pas ???*/
+.entree,
+.plat,
+.lait,
+.dessert {    
+    margin : 0 0 2px 0;
+}
+
+/*pas utilisé*/
+.commentaire {}
+
+
+/* formulaire de saisie des menus */
 .dateFormulaireSaisie {
     font-size : 1.4em;
     margin: 5px 5px 0px 5px;
@@ -208,6 +240,16 @@ section.menu {
     justify-content:center;
 
 }
+.formulaireBoutonRepas{
+  
+}
+
+.unecase>div {
+    display : flex;
+    flex-direction: row;
+    justify-content:  space-between;
+    margin-top: 0px;
+}
 
 .palibel{
     padding-bottom: 8px; 
@@ -234,7 +276,7 @@ section.menu {
 /************************************************************************
 navigation du menu
  ************************************************************************/
-nav {
+nav.principal {
     display : flex;
     flex-direction : row;
     justify-content: space-between;

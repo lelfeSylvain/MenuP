@@ -40,9 +40,9 @@ if (!isset($_REQUEST['num'])) {// erreur d'aiguillage
                 $monRepasAffiche = new V_Repas($monRepas, $maSem->getLundi(), true);
                
                 if ($numrep % 2 === 0) {
-                    $bg = "midisaisi";
+                    $bg = "midi saisi";
                 } else {
-                    $bg = "soirsaisi";
+                    $bg = "soir saisi";
                 }
                  include 'vues/v_affichageRepasSaisi.php';
                 $numrep++;
