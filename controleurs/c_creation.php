@@ -13,7 +13,7 @@ if (!isset($_REQUEST['num'])) {// erreur d'aiguillage
     $numrep = substr($num, -1);
     $dateSem = substr($num, 1, strlen($num) - 2);
     $maSem = new Semaine($dateSem);
-
+    include 'vues/v_creation.php';
     switch ($codeAction) {
         case 'v': {//validation d'un repas
                 $repas = array();
@@ -38,13 +38,13 @@ if (!isset($_REQUEST['num'])) {// erreur d'aiguillage
                 $pdo->setLeRepas($maSem, $numrep, $monRepas);
 
                 $monRepasAffiche = new V_Repas($monRepas, $maSem->getLundi(), true);
-               
+
                 if ($numrep % 2 === 0) {
                     $bg = "midi saisi";
                 } else {
                     $bg = "soir saisi";
                 }
-                 include 'vues/v_affichageRepasSaisi.php';
+                include 'vues/v_affichageRepasSaisi.php';
                 $numrep++;
                 if ($numrep >= 9) {
                     break;
@@ -53,7 +53,8 @@ if (!isset($_REQUEST['num'])) {// erreur d'aiguillage
         case 'f': {// affichage du formulaire de saisie
                 $unRepas = new Repas($pdo->getLeRepas($maSem, $numrep));
                 $menu = new V_Repas($unRepas, $maSem->getLundi(), true);
-                include 'vues/v_formulaireRepas.php';break;
+                include 'vues/v_formulaireRepas.php';
+                break;
             }
         default : {// erreur d'aiguillage :  le code action n'est pas connu
                 include 'vues/v_erreur.php';

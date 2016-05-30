@@ -1,4 +1,9 @@
+Connexion </div>
 
+</header>
+<?php
+echo $texte;
+?>
 <form method="post" action="index.php?uc=login" name='identification' class="formulaireLogin">
     <div class='formulaireLigneRadio'>               
         Pour se connecter :

@@ -17,24 +17,41 @@ Police de caractères spécifiques
 /************************************************************************
  Style général
  ************************************************************************/
-
 body {
-    margin : 0 10% 0 10%;
+    /*position:  absolute;
+    background-position:0% 0%;
+    background: url(../images/logoBdeB.png) no-repeat;*/
+    background-color : #333;
+    /* gère les coupures de mots */
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+    /* aucune marge par défaut*/ 
+    margin:0;
+    padding:0;
+    border:0;			/* This removes the border around the viewport in old versions of IE */
+    /* on utilise toute la place */ 
+    width:100%;
+}
+
+/* section principal */
+body>section{
+    width:96%;			/* page width minus left and right padding */
+    left:2%;
     background-color : #333;
     color: chocolate; 
     font-family:  "Arial", "Trebuchet MS";
-    width: 80%;
+    /* a tester si c'est utile
     min-height: 800px;
-    min-width: 800px;
+    min-width: 800px;*/
+
 }
 
-footer {
-    font-size : 0.8em;
-    text-align: center;
-}
-
+/* tous les header on des majuscules et de l'espacement */
 header {
-    font-size : 1.4em;
+    font-size : 1.2em;
     font-weight: bold;
     padding-bottom: 3px;
     text-align: center;
@@ -42,10 +59,7 @@ header {
     font-variant-caps:  petite-caps;
 }
 
-header.titre {
-    margin-top : 10px;
-}
-
+/* les Liens */
 a:link {
     color : SandyBrown;
 }
@@ -53,38 +67,47 @@ a:visited {
     color : SaddleBrown;
 }
 /************************************************************************
-affichage du menu
+affichage des menus est encapsuler dans cette section
  ************************************************************************/
 section.menu {
-    
+
     height: 80%;
     display : flex;
     flex-direction : column;
     justify-content: space-around;
 }
-
+/* une ligne du menu de la semaine 
+cette ligne est répétée 5 fois */
 .ligneMenu {
     display : flex;
     flex-direction : row;
     justify-content: space-around;
-    padding: 5px ;
-    margin: 10px;
+    margin: 10px 5px 0 5px ;
 } 
-
+/* une ligne est composée de : unecase, un jour et unecase */
 .unecase {   
-    margin: 0px 5px 0px 5px;
-    padding: 5px ;    
+    margin: 0px ;
+    padding: 2px 2px 2px 5px ;    
     background-color:  grey;
     color:  black;   
     border-radius:5px;
     height: 120px;
     word-wrap: break-word;
+    overflow:  auto;
 }
-
+/* La première lettre de chaque ligne est en majuscule */
 .unecase ::first-letter {
-     text-transform: capitalize;
+    text-transform: capitalize;
 }
 
+/* div boite */
+.unecase>div {
+    display : flex;
+    flex-direction: row;
+    justify-content:   space-between;
+    margin: auto;
+}
+/* affiche la date du jour*/ 
 .jour{
     color: #DD0;
     font-weight: bold;
@@ -94,10 +117,11 @@ section.menu {
      text-decoration-style: solid;*/
     width: 150px;
     font-family: "Rock Salt",arial,serif;
-    font-size:20px;
+    font-size:18px;
     text-align: center;
+    max-height : 110px;
 }
-
+/* les types des cases menus*/
 .midi.tantot {
     background-color: lightgoldenrodyellow; 
     width: 40%;
@@ -127,21 +151,21 @@ section.menu {
     background-image : url(../images/moon2.png);
     background-position:102% 50%;
 }
-
+/* pour la saisie des menus */
 .midi.saisi {
     background-color: lightgoldenrodyellow; 
- 
+
     color: chocolate; 
 
 }
+
 .saisi {
     width: 40%;
-    
     margin: 5px;
 }
-
+/* la case sélectionnée : c'est-à-dire celle qu'on met en valeur */
 .selection {
-    font-size : 1.4em;
+    font-size : 1.2em;
     height: 120px;
 }
 
@@ -153,7 +177,7 @@ section.menu {
     background-color:  aqua ; 
     color:  maroon; 
 }
-
+/* si c'est un message*/ 
 .message {
     margin-top: 20px;
     text-align: center;
@@ -162,18 +186,18 @@ section.menu {
 
 /* style des affichages des textes des repas */
 .repas {
-    
+
 }
 
-/* ne fonctionne pas ???*/
+/* les types de plat */
 .entree,
 .plat,
 .lait,
 .dessert {    
-    margin : 0 0 2px 0;
+    margin : 0 0 3px 0;
 }
 
-/*pas utilisé*/
+/*Pour les commentaires*/
 .commentaire {}
 
 
@@ -241,14 +265,7 @@ section.menu {
 
 }
 .formulaireBoutonRepas{
-  
-}
 
-.unecase>div {
-    display : flex;
-    flex-direction: row;
-    justify-content:  space-between;
-    margin-top: 0px;
 }
 
 .palibel{
@@ -280,4 +297,46 @@ nav.principal {
     display : flex;
     flex-direction : row;
     justify-content: space-between;
+    margin-top: 10px;
+}
+
+/**
+Entete design avec coin arrondi
+affiche les dates de la semaine
+*/
+
+.entete {
+    background-color : whitesmoke;
+    height: 30px;
+    width: 800px;
+    color:  chocolate;
+    border-radius : 0 0 20px 0  / 0 0 90% 0  ;
+}
+
+body>section>header.principal {
+    font-size : 1.4em;
+}
+
+/* Pied de page */
+/* pied de page principal qui est au dessous de la section principal */
+footer {
+    font-size : 0.8em;
+    text-align: right;
+    display : flex;
+    flex-direction : column;
+    justify-content:  flex-end;
+    flex-wrap:  wrap-reverse;
+}
+
+footer>nav {
+    margin: 10px 0 10px 0; 
+}
+
+footer>div.pied {
+    background-color : whitesmoke;
+    height: 30px;
+    width: 800px;
+    color:  chocolate;
+    border-radius : 20px 0 0 0  / 90% 0 0 0  ;
+
 }

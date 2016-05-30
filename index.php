@@ -25,7 +25,7 @@ elseif (!Session::isLogged()) {
     include('controleurs/c_semaine.php');
 } else {// à partir d'ici, l'utilisateur est forcément connecté
     // instanciation de la fabrique de vue
-    $vue = FabriqueVue::getFabrique();
+    //$vue = FabriqueVue::getFabrique();
 
     // justement on enregistre la dernière activité de l'utilisateur dans la BD
     $pdo->setDerniereCx($_SESSION['numUtil']);
@@ -48,7 +48,7 @@ elseif (!Session::isLogged()) {
                 break;
             }
         default :  // par défaut on consulte les posts
-            include("controleurs/c_lecture.php");
+            include("controleurs/c_semaine.php");
     }
 }
 include("vues/v_pied.php");

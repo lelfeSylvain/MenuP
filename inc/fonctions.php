@@ -10,7 +10,8 @@ define("EOL", "<br />\n"); // fin de ligne html et saut de ligne
 define("EL", "\n"); //  saut de ligne 
 // instanciation du modèle PDO
 $pdo = PDOMenu::getPdoMenu();
-$tabjour = array("lundi ", "mardi ", "mercredi ", "jeudi ", "vendredi ");
+$tabJour = array("lundi ", "mardi ", "mercredi ", "jeudi ", "vendredi ");
+$tabMois = array("janvier","février","mars","avril", "mai","juin","juillet","août","septembre","octobre","novembre","décembre");
 $_SESSION['debug'] = "hidden";
 // TODO effacer le mode debug
 //$_SESSION['debug']="text";

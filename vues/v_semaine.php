@@ -1,8 +1,7 @@
 <?php
 /****** Affichage de l'entete *********/
-echo "<section class='menu'>".EL."<header class='titre'>".EL;
-echo "Semaine n° ".$maSem->getNumsem()." du lundi ".$maSem->getLundi()->format('d/m/Y')." au vendredi ".$maSem->getVendredi()->format('d/m/Y');
-echo "</header>".EL;
+echo "Semaine n° ".$maSem->getNumsem()." du ".$maSem->getLundi()->format('d/m/Y')." au ".$maSem->getVendredi()->format('d/m/Y');
+echo "</div>".EL."</header>".EL."<section class='menu'>".EL;
 
 
 for ($i=0;$i<10;$i++ ){// debut boucle des repas
@@ -14,7 +13,7 @@ for ($i=0;$i<10;$i++ ){// debut boucle des repas
         $bg="soir".$estMatin;
         ?>
         <section class='jour'>
-            <?php echo $tabjour[$i/2].EOL.$jour->format(" j"); ?>
+            <?php echo $tabJour[$i/2].EOL.$jour->format(" j").EOL.$tabMois[(int) ($jour->format("m"))-1]; ?>
         </section>
 <?php
         $jour->modify("+1 day");
