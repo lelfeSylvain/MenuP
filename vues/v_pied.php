@@ -12,15 +12,14 @@
             echo "<a href='index.php?uc=lecture&num=actuelle' class='textgros'>Retourner à l'accueil</a> - ";
             echo "<a href='index.php?uc=login&num=out'>Déconnexion</a> \n";
         } else {// non loggé : on propose de se connecter
-            echo "<a href='index.php?uc=login'>Connexion</a> \n";
+            echo "<a href='index.php?uc=login'>Connexion</a> - ";
         }
         ?>
-    </nav>
-    <div class="pied">
+    
         <?php
-        echo $texte . "Menu v2.0.0 alpha - <a href='http://etablissementbertrandeborn.net/'>BTS SIO BdeB</a> - <img src='https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png' alt='cc-by-nc-sa' />" . EL;
+        echo $texte . "Menu v2.0.1 alpha - <a href='http://etablissementbertrandeborn.net/'>BTS SIO BdeB</a> - <img src='https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png' alt='cc-by-nc-sa' />" . EL;
         ?>
-    </div>    
+    </nav>    
     <?php
     if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === "debug" && $_SESSION['debug'] === "text") {
         phpinfo();

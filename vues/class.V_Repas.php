@@ -116,50 +116,43 @@ class V_Repas {
 
     public function afficherRepas($bg, $i) {
         ?>
-        <section class='unecase <?php echo $bg; ?>' num-case='<?php echo $i; ?>'>
-            <div class="boite">
+        <section class='unecase <?php echo $bg." num".$i; ?>' >
+            <section class="boite <?php echo $this->getRepas()->getTypeCase() ?>">
 
                 <?php
                 if ($this->getRepas()->getTypeCase() === Repas::TYPEREPAS) {
                     ?>
-
-                    <section class='repas' >   
-                        <header>
-                            <?php echo $this->getRepas()->getTitre() . EL; ?>
-                        </header>
-                        <div class='entree'>
-                            <?php echo $this->getRepas()->getLigne(1) . EL; ?>
-                        </div>
-                        <div class='plat'>
-                            <?php echo $this->getRepas()->getLigne(2) . EL; ?>
-                        </div>
-                        <div class='lait'>
-                            <?php echo $this->getRepas()->getLigne(3) . EL; ?>
-                        </div>
-                        <div class='dessert'>
-                            <?php echo $this->getRepas()->getLigne(4) . EL; ?>
-                        </div>
-
-                    </section>
+                    <header>
+                        <?php echo $this->getRepas()->getTitre() . EL; ?>
+                    </header>
+                    <div class='entree'>
+                        <?php echo $this->getRepas()->getLigne(1) . EL; ?>
+                    </div>
+                    <div class='plat'>
+                        <?php echo $this->getRepas()->getLigne(2) . EL; ?>
+                    </div>
+                    <div class='lait'>
+                        <?php echo $this->getRepas()->getLigne(3) . EL; ?>
+                    </div>
+                    <div class='dessert'>
+                        <?php echo $this->getRepas()->getLigne(4) . EL; ?>
+                    </div>
                     <?php
                 } else {
                     ?>
-
-                    <section class='message' >   
-                        <header>
-                            <?php echo $this->getRepas()->getTitre() . EL; ?>
-                        </header>
-                        <div class='commentaire'>
-                            <?php echo $this->getRepas()->getLigne(2) . EL; ?>
-                        </div>
-
-                    </section>
-
-                <?php
+                    <header>
+                        <?php echo $this->getRepas()->getTitre() . EL; ?>
+                    </header>
+                    <div class='commentaire'>
+                        <?php echo $this->getRepas()->getLigne(2) . EL; ?>
+                    </div>
+                    <?php
                 }
-                $this->afficheBouton($this->estConnecte, $this->unRepas->estCommunique(), $this->semaine->format('Y-m-d'), $i);
                 ?>
-            </div>
+            </section>
+            <?php
+            $this->afficheBouton($this->estConnecte, $this->unRepas->estCommunique(), $this->semaine->format('Y-m-d'), $i);
+            ?>
         </section>
         <?php
     }
