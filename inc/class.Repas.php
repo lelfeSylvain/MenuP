@@ -82,11 +82,6 @@ class Repas {
         $this->type = self::TYPEMESSAGE;
     }
 
-	private function gestionVendredi(){
-		$this->ligne[0] = "Bon week-end";
-        $this->ligne[2] = "";
-		$this->type = Repas::$TYPEMESSAGE;
-	}
 	
     private function estVide($unRepas) {
         $trouve = true;

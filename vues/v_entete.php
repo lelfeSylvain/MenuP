@@ -10,7 +10,6 @@
         <script language="javascript" src="js/fonctions.js"></script>
     </head>
     <body>
-        <div class="logo"></div>
         <section class="principal">
             <header  class="principal" >
                 <div class="entete">
