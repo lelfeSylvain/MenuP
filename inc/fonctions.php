@@ -3,7 +3,7 @@
 require_once 'inc/class.Session.php';
 Session::init();
 require_once 'inc/class.PDOMenu.php';
-//require_once 'inc/class.FabriqueVue.php';
+
 include 'vues/v_entete.php';
 // constantes 
 define("EOL", "<br />\n"); // fin de ligne html et saut de ligne

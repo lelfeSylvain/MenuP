@@ -58,4 +58,4 @@ elseif (!Session::isLogged()) {
  * une visite a lieu, mémorisons-la
  */
 include('controleurs/c_visite.php');
-include("vues/v_pied.php");
+

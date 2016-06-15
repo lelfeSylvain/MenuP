@@ -75,28 +75,7 @@ section.menu {
     flex-direction : column;
     justify-content: space-around;
 }
-/* une ligne du menu de la semaine 
-cette ligne est répétée 5 fois */
-.ligneMenu {
-    display : flex;
-    flex-direction : row;
-    justify-content: space-around;
-    margin: 10px 5px 0 5px ;
-} 
-/* une ligne est composée de :  un jour smallscreen, unecase, un jour et unecase */
 
-
-.unecase {   
-    display : flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: auto;
-    border-radius:5px;
-    height: 120px;
-    background-color: grey;
-    color:black;
-    overflow:  auto;
-}
 /* La première lettre de chaque ligne est en majuscule */
 .boite ::first-letter {
     text-transform: capitalize;
@@ -112,52 +91,18 @@ cette ligne est répétée 5 fois */
 }
 /* affiche la date du jour*/ 
 .jour{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     color: #DD0;
     font-weight: bold;
     text-decoration: none;
-    /*text-decoration-color: -moz-use-text-color;
-     text-decoration-line: none;text-shadow: 00px 0px 05px #000;
-     text-decoration-style: solid;*/
-    width: 150px;
     font-family: "Rock Salt",arial,serif;
     font-size:18px;
     text-align: center;
     max-height : 110px;
 }
 
-.jour.smallscreen {
-    display :  none;
-}
-/* les types des cases menus*/
-.midi.tantot {
-    background-color: lightgoldenrodyellow; 
-    width: 40%;
-    color: chocolate; 
-    background-repeat:no-repeat;
-    background-image : url(../images/sun2.png);
-    background-position:115% -120%;
-}
-.soir.tantot {
-    width: 60%;
-    background-repeat:no-repeat;
-    background-image : url(../images/moon1.png);
-    background-position:108% 50%;
-}
-
-.midi.matin {
-    background-color: lightgoldenrodyellow; 
-    width: 60%;
-    color: chocolate; 
-    background-repeat:no-repeat;
-    background-image : url(../images/sun.png);
-    background-position:110% 90%;
-}
-.soir.matin {
-    width: 40%;
-    background-repeat:no-repeat;
-    background-image : url(../images/moon2.png);
-    background-position:102% 50%;
-}
 
 .unecase.soir.num9 {
     background-image : url(../images/logosansfond.png);
@@ -213,96 +158,6 @@ cette ligne est répétée 5 fois */
 /*Pour les commentaires*/
 .commentaire {}
 
-
-/* formulaire de saisie des menus */
-.dateFormulaireSaisie {
-    font-size : 1.4em;
-    margin: 5px 5px 0px 5px;
-}
-
-.formulaireSaisie {
-    display : flex;
-    flex-direction : column;
-    justify-content: flex-start;
-    padding: 5px ;
-    margin: 10px;
-    width: 80%;
-    height: 80%;
-}
-
-.formulaireBoutonRadio {
-    display : flex;
-    flex-direction : column;
-    justify-content: flex-start;
-}
-
-.formulaireLesChamps {
-    display : flex;
-    flex-direction : column;
-    justify-content:  center;
-    margin-left: 80px;
-}
-.formulaireLigneChamp {
-    display : flex;
-    flex-direction : row;    
-    justify-content: flex-start;
-    padding: 5px ;
-}
-.formulaireLigneRadio {
-    display : flex;
-    flex-direction : row;    
-    justify-content: flex-start;
-    padding: 5px ;
-}
-.formulaireColonneLibelle {
-    display : flex;
-    flex-direction : column;    
-    justify-content:  flex-end;
-    padding: 0px 5px 5px  5px ;
-}
-
-.formulaireBoutonValidation{
-    display : flex;
-    flex-direction :row;
-    justify-content:    flex-end;
-    width: 60%;
-    margin :30px;
-    height: 30px;
-}
-
-.formulaireLogin {
-    min-height : 400px;
-    display : flex;
-    flex-direction : column; 
-    justify-content:center;
-
-}
-.formulaireBoutonRepas{
-
-}
-
-.palibel{
-    padding-bottom: 8px; 
-    margin:  0px 5px 0px 15px;
-    width: 70px;
-}
-.palibel2{
-    padding-bottom: 8px; 
-    margin:  0px 5px 0px 15px;
-    width: 120px;
-}
-
-.pachamp{
-    margin-bottom: 8px;
-}
-
-.boutonValidation {
-    margin: 0px 30px 0px 30px;
-}
-
-.boutonConnexion {
-    margin-left: 10px;
-}
 /************************************************************************
 navigation du menu
  ************************************************************************/
@@ -313,41 +168,3 @@ nav.principal {
     margin-top: 10px;
 }
 
-/**
-Entete design avec coin arrondi
-affiche les dates de la semaine
-*/
-
-.entete {
-    background-color : whitesmoke;
-    height: 30px;
-    width: 800px;
-    color:  chocolate;
-    border-radius : 0 0 20px 0  / 0 0 90% 0  ;
-}
-
-body>section>header.principal {
-    font-size : 1.4em;
-}
-
-/* Pied de page */
-/* pied de page principal qui est au dessous de la section principal */
-footer {
-    font-size : 0.8em;
-    text-align: right;
-    display : flex;
-    flex-direction : column;
-    justify-content:  flex-end;
-    flex-wrap:  wrap-reverse;
-}
-
-footer>nav {
-    margin: 10px 0 10px 0; 
-
-    background-color : whitesmoke;
-    height: 30px;
-    width: 800px;
-    color:  chocolate;
-    border-radius : 20px 0 0 0  / 90% 0 0 0  ;
-
-}

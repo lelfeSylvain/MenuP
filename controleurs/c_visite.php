@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * controleur qui gère les stats des visites, les connexions aussi
+ * il est appelé pour appeler v_pied.php
+ */
 // ETAPE 0 : on récupère le nombre de connexion du jour
 $nb_cx = $pdo->getNbConnexionDuJour();
 
@@ -37,14 +40,14 @@ $r = $pdo->delOldTS();
 $nb_visiteurs = $pdo->getNbVisiteur();
 // On n'a plus qu'à  afficher le nombre de connectés !
 $phraseNbVisiteur = " " . pluriel($nb_visiteurs, "visiteur") . " " . pluriel($nb_visiteurs, "connecté") . " ";
-$phraseNbVisiteur = "<p>Il y a actuellement " . $nb_visiteurs . $phraseNbVisiteur . " : ";
+$phraseNbVisiteur = "<p>Il y a actuellement " . $nb_visiteurs . $phraseNbVisiteur ;
 // ETAPE 4 : on liste les pseudos des visiteurs connectés
-if ($_SESSION['username'] <> "visitor") {
+if ($_SESSION['username'] !== "visitor") {
     $lesPseudos = $pdo->getLesPseudosConnectes();
     $r = "";
     foreach ($lesPseudos as $unPseudo) {
         if ($r == "") {
-            $r = $unPseudo['pseudo'];
+            $r = " : ". $unPseudo['pseudo'];
         } else {
             $r.=", " . $unPseudo['pseudo'];
         }
@@ -65,3 +68,4 @@ if ($_SESSION['username'] <> "visitor") {
 }
 $phraseNbVisiteur.="</p>";
 // echo $phraseNbVisiteur;
+include("vues/v_pied.php");
