@@ -1,8 +1,8 @@
 <?php
-$texte="";
+$texteNav="";
 if ($num === 'out') {
     logout();
-    $texte="Vous êtes déconnecté.".EOL;
+    $texteNav="Vous êtes déconnecté.".EOL;
 } else {// on ne se déconnecte pas, donc on se connecte
     $login = "";
     $mdp = "";
@@ -17,14 +17,14 @@ if ($num === 'out') {
                 if ($login === "debug") $_SESSION['debug'] = "text" ;
                 $_SESSION['tsDerniereCx'] = $rep['tsDerniereCx'];
                 $_SESSION['numUtil'] = $rep['num'];
-                $texte="Vous êtes connecté.".EOL;
+                $texteNav="Vous êtes connecté.".EOL;
                 $pdo->setDerniereCx($rep['num']);
                 header('Location: index.php?uc=lecture&num=actuelle');
             } else {// mauvais mot de passe ?
-                $texte= "Connexion refusée".EOL;
+                $texteNav= "Connexion refusée".EOL;
             }
         } else {// utilisateur inconnu
-                $texte=  "Connexion refusée".EOL;
+                $texteNav=  "Connexion refusée".EOL;
             }
     } else {
         // première connexion

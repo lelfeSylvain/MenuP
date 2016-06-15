@@ -31,6 +31,7 @@ cette ligne est répétée 5 fois */
 /* affiche la date du jour*/ 
 .jour{
     width: 150px;
+    flex-direction: column;
 }
 
 .jour.smallscreen {
@@ -227,19 +228,28 @@ footer {
     font-size : 0.8em;
     text-align: right;
     display : flex;
-    flex-direction : column;
+    flex-flow : column wrap-reverse;
     justify-content:  flex-end;
-    flex-wrap:  wrap-reverse;
     margin-right: 5px;
+    
+    
+
+    
 }
 
 footer>nav {
-    margin: 10px 0 10px 0; 
-
     background-color : whitesmoke;
-    
+    margin: 10px 0 10px 0; 
     width: 800px;
     color:  chocolate;
     border-radius : 20px 0 0 0  / 90% 0 0 0  ;
 
+}
+
+div.pied {
+    padding-right: 5px;
+}
+
+div.pied>p {
+    margin : 0px;
 }

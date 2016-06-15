@@ -20,7 +20,9 @@ for ($i = 0; $i < 10; $i++) {// debut boucle des repas
         ?>
 
         <section class='jour largescreen'>
-            <?php echo $tabJour[$i / 2] . EOL . $jour->format(" j ") . EOL . $tabMois[(int) ($jour->format("m")) - 1]; ?>
+            <div class='j1'>
+                <?php echo $tabJour[$i / 2] ."</div><div class='j1'>" . $jour->format(" j ") . "</div><div class='j1'>" . $tabMois[(int) ($jour->format("m")) - 1]; ?>
+            </div>
         </section>
         <?php
         $jour->modify("+1 day");

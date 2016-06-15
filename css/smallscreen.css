@@ -13,7 +13,8 @@ cette ligne est répétée 5 fois */
     display : flex;
     flex-direction : column;
     justify-content: space-around;
-    margin: 10px 5px 0 5px ;
+    align-content: flex-start;
+    margin: 10px 5px 5px 5px ;
 } 
 /* une ligne est composée de :  un jour smallscreen, unecase, un jour et unecase */
 
@@ -29,15 +30,22 @@ cette ligne est répétée 5 fois */
     color:black;
     overflow:  auto;
     margin-bottom: 5px;
+
+}
+/* La première lettre de chaque ligne est en majuscule */
+.boite ::first-letter {
+    text-transform: capitalize;
 }
 
-.j1 {
-    display : flex;
-    margin : 0px 5px 0px 5px ;
-}
-.jour.largescreen{
+.jour.largescreen {
     display : none;
 }
+
+.jour{
+    display: flex;
+    flex-direction: row;
+}
+
 /* les types des cases menus*/
 .midi.tantot {
     background-color: lightgoldenrodyellow; 
@@ -164,9 +172,12 @@ affiche les dates de la semaine
 */
 
 .entete {
+
+    display:none;
+
     background-color : whitesmoke;
     color:  chocolate;
-    border-radius : 0 0 20px 0  / 0 0 90% 0  ;
+    border-radius : 0 0 20px 0  / 0 0 90% 0  
 }
 
 body>section>header.principal {

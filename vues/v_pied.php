@@ -1,25 +1,11 @@
                 
 <footer  class="principal">
     <nav class='pied'>
-        <?php
-        $texte = "";
-        if (Session::isLogged()) {
-            $texte = $_SESSION['username'];
-            if (isset($_SESSION['prenom']) or isset($_SESSION['nom'])) {
-                $texte .= " alias " . $_SESSION['prenom'] . " " . $_SESSION['nom'];
-            }
-            $texte .= " - ";
-            echo "<a href='index.php?uc=lecture&num=actuelle' >Retourner à l'accueil</a> - ";
-            echo "<a href='index.php?uc=login&num=out'>Déconnexion</a> \n";
-        } else {// non loggé : on propose de se connecter
-            echo "<a href='index.php?uc=login'>Connexion</a> - ";
-        }
-        ?>
-    
-        <?php
-        echo $phraseNbVisiteur;
-        echo $texte . "Menu v2.0.2 alpha - <a href='http://etablissementbertrandeborn.net/'>BTS SIO BdeB</a> - <img src='https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png' alt='cc-by-nc-sa' />" . EL;
-        ?>
+        <div class='pied'>
+            <?php
+            echo $texteNav . $phraseNbVisiteur . "<p>Menu v2.0.2 alpha - <a href='http://etablissementbertrandeborn.net/'>Site de BdeB</a> - <img src='https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png' alt='cc-by-nc-sa' /></p>" . EL;
+            ?>
+        </div>
     </nav>    
     <?php
     if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === "debug" && $_SESSION['debug'] === "text") {

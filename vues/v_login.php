@@ -2,7 +2,7 @@ Connexion </div>
 
 </header>
 <?php
-echo $texte;
+echo $texteNav;
 ?>
 <form method="post" action="index.php?uc=login" name='identification' class="formulaireLogin">
     <div class='formulaireLigneRadio'>               

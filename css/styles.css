@@ -92,8 +92,8 @@ section.menu {
 /* affiche la date du jour*/ 
 .jour{
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    align-content: center;
     color: #DD0;
     font-weight: bold;
     text-decoration: none;
@@ -103,6 +103,11 @@ section.menu {
     max-height : 110px;
 }
 
+.j1 {
+    display : flex;
+    justify-content: center;
+    margin : 0px 5px 0px 5px ;
+}
 
 .unecase.soir.num9 {
     background-image : url(../images/logosansfond.png);
