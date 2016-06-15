@@ -137,6 +137,7 @@ class Session
     public static function logout()
     {
         unset($_SESSION['uid'], $_SESSION['ip'], $_SESSION['expires_on']);
+        $_SESSION['username'] ="visitor";
     }
 
     /**

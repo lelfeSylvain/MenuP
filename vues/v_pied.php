@@ -17,6 +17,7 @@
         ?>
     
         <?php
+        echo $phraseNbVisiteur;
         echo $texte . "Menu v2.0.1 alpha - <a href='http://etablissementbertrandeborn.net/'>BTS SIO BdeB</a> - <img src='https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png' alt='cc-by-nc-sa' />" . EL;
         ?>
     </nav>    

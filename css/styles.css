@@ -83,7 +83,9 @@ cette ligne est répétée 5 fois */
     justify-content: space-around;
     margin: 10px 5px 0 5px ;
 } 
-/* une ligne est composée de : unecase, un jour et unecase */
+/* une ligne est composée de :  un jour smallscreen, unecase, un jour et unecase */
+
+
 .unecase {   
     display : flex;
     flex-direction: row;
@@ -122,6 +124,10 @@ cette ligne est répétée 5 fois */
     text-align: center;
     max-height : 110px;
 }
+
+.jour.smallscreen {
+    display :  none;
+}
 /* les types des cases menus*/
 .midi.tantot {
     background-color: lightgoldenrodyellow; 
@@ -154,7 +160,7 @@ cette ligne est répétée 5 fois */
 }
 
 .unecase.soir.num9 {
-    background-image : url(../images/logo.png);
+    background-image : url(../images/logosansfond.png);
     background-position:100% 0%;
 }
 

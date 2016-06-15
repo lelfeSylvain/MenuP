@@ -208,4 +208,147 @@ class PDOMenu {
         return $result;
     }
 
+    /*
+     * récupère le nombre de connexion pour le jour en cours
+     */
+
+    public function getNbConnexionDuJour() {
+        $jour = new DateTime();
+        $sql = "SELECT nb FROM " . PdoMenu::$prefixe . "log WHERE jour='" . $jour->format('Y-m-d') . "'";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetch();
+        return $result['nb'];
+    }
+
+    /*
+     * Ajoute une journée dans les logs de la BD
+     */
+
+    public function setPremiereConnexion() {
+        $jour = new DateTime();
+        $sql = "INSERT INTO " . PdoMenu::$prefixe . "log (jour,nb) VALUES ('" . $jour->format('Y-m-d') . "', '0')";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        return $sth;
+    }
+
+    /*
+     * compte le nombre d'IP $ip présent dans les logs (en principe 1 ou 0)
+     */
+
+    public function getNbIP($ip) {
+        $sql = "SELECT COUNT(*) AS nb FROM " . PdoMenu::$prefixe . "connexions WHERE ip='" . $ip . "'";
+        $this->logSQL($sql);
+        $sql = "SELECT COUNT(*) AS nb FROM " . PdoMenu::$prefixe . "connexions WHERE ip=?";
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($ip));
+        $result = $sth->fetch();
+        $this->logSQL($result['nb']);
+        return $result['nb'];
+    }
+
+    /*
+     * ajoute une nouvelle IP dans la table connexions
+     */
+
+    public function setNlleIP($ip) {
+        if (isset($_SESSION['username'])) {
+            $user = $_SESSION['username'];
+        } else {
+            $user = "";
+        }
+        $sql = "INSERT INTO " . PdoMenu::$prefixe . "connexions (ip,time,pseudo) VALUES ('" . $ip . "', " . time() . ",'" . $user . "')";
+        $this->logSQL($sql);
+        $sql = "INSERT INTO " . PdoMenu::$prefixe . "connexions (ip,time,pseudo) VALUES (?,?,?)";
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($ip, time(), $user));
+        return $sth;
+    }
+
+    /*
+     * incrémente le nombre de log dans la table log pour aujourd'hui
+     */
+
+    public function incLog() {
+        $jour = new DateTime();
+        $sql = "UPDATE " . PdoMenu::$prefixe . "log SET nb=nb+1 WHERE jour='" . $jour->format('Y-m-d') . "'";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        return $sth;
+    }
+
+    /*
+     * on met à jour le timestamp de l'IP
+     */
+
+    public function updateIP($ip) {
+        $sql = "UPDATE " . PdoMenu::$prefixe . "connexions SET time=" . time() . " WHERE ip='" . $ip . "'";
+        $this->logSQL($sql);
+        $sql = "UPDATE " . PdoMenu::$prefixe . "connexions SET time=? WHERE ip=?";
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array(time(), $ip));
+        return $sth;
+    }
+
+    /*
+     * efface les connexions plus vieille de 5 min de la table connexions
+     */
+
+    public function delOldTS() {
+        $timestamp_5min = time() - 300; // 60 * 5 = nombre de secondes écoulées en 5 minutes
+        $sql = "DELETE FROM " . PdoMenu::$prefixe . "connexions WHERE time < " . $timestamp_5min;
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        return $sth;
+    }
+
+    /*
+     * renvoie le nombre de visiteurs actuellement connectés
+     */
+
+    public function getNbVisiteur() {
+        $jour = new DateTime();
+        $sql = "SELECT count(*) as nb FROM " . PdoMenu::$prefixe . "connexions";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetch();
+        return $result['nb'];
+    }
+
+    /*
+     * Renvoie la liste des pseudos connectés en ce moment.
+     *       */
+
+    public function getLesPseudosConnectes() {
+        $sql = "SELECT pseudo  FROM " . PdoMenu::$prefixe . "connexions ";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetchAll();
+        return $result;
+    }
+
+    public function getMaxConnexion() {
+        $sql = "SELECT max(nb) as nbmax FROM " . PdoMenu::$prefixe . "log ";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetch();
+        return $result["nbmax"];
+    }
+    
+    public function getJourConnexion($jour){
+        $sql = "SELECT jour FROM " . PdoMenu::$prefixe . "log WHERE nb = ? order by 1 desc ";
+        $this->logSQL($sql);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($jour));
+        $result = $sth->fetch();
+        return $result["jour"];
+    }
 }

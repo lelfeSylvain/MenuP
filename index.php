@@ -6,6 +6,9 @@
 require_once 'inc/fonctions.php'; //appelle tous les 'include' et fonctions utilitaires
 
 
+/*
+ * examinons les paramètres get 
+ */
 if (!isset($_REQUEST['uc'])) {//s'il n'y a pas d'uc alors on consulte le menu
     $uc = 'lecture';
     $num = 'actuelle';
@@ -51,4 +54,8 @@ elseif (!Session::isLogged()) {
             include("controleurs/c_semaine.php");
     }
 }
+/*
+ * une visite a lieu, mémorisons-la
+ */
+include('controleurs/c_visite.php');
 include("vues/v_pied.php");
