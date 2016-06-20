@@ -1,5 +1,7 @@
 <?php
-
+if (! isset($_SESSION['username'])) {
+    $_SESSION['username'] = "visitor";
+}
 // ETAPE 0 : on récupère le nombre de connexion du jour
 $nb_cx = $pdo->getNbConnexionDuJour();
 
@@ -39,7 +41,7 @@ $nb_visiteurs = $pdo->getNbVisiteur();
 $phraseNbVisiteur = " " . pluriel($nb_visiteurs, "visiteur") . " " . pluriel($nb_visiteurs, "connecté") . " ";
 $phraseNbVisiteur = "<p>Il y a actuellement " . $nb_visiteurs . $phraseNbVisiteur . " : ";
 // ETAPE 4 : on liste les pseudos des visiteurs connectés
-if ($_SESSION['username'] <> "visitor") {
+if ($_SESSION['username'] !== "visitor") {
     $lesPseudos = $pdo->getLesPseudosConnectes();
     $r = "";
     foreach ($lesPseudos as $unPseudo) {

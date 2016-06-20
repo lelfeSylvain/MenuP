@@ -52,50 +52,53 @@ class V_Repas {
 
 // ********************************* les champs **************************
         ?>
-        <section class='formulaireBoutonRAdio'>
-            <div class='formulaireLigneRadio'>
-                <input type = "radio" name = "message" value = "repas"  <?php echo $chkmenu; ?> />
-                <p class="palibel"> Repas</p>
-            </div>
-            <div class='formulaireLesChamps'>
 
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel">Titre  :</p>
-                    <input type="text" size="120" name="titm" placeholder="un titre pour ce menu" class="pachamp" value="<?php echo $titre; ?>">
-                </div>
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel">Entrée :</p>
-                    <input type="text" size="120" name="ent" placeholder="liste des entrées" class="pachamp" value="<?php echo $entree; ?>"> 
-                </div>
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel">Plat :</p>
-                    <input type="text" size="120" name="plat" placeholder="liste des plats" class="pachamp" value="<?php echo $plat; ?>">
-                </div>  
-                <div class='formulaireLigneChamp'>                
-                    <p class="palibel">Laitage :</p>
-                    <input type="text" size="120" name="lait"  class="pachamp" value="<?php echo $lait; ?>">
-                </div>
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel">Dessert :</p>
-                    <input type="text" size="120" name="des" placeholder="liste des desserts" class="pachamp" value="<?php echo $dessert; ?>"> 
+        <section class='formulaireBoutonRadio' >
+
+            <div class='formulaireLigneRadio'>
+                <input type = "radio" name = "message" value = "repas" id="radiorepas" <?php echo $chkmenu; ?> /><label for="radiorepas"> Repas</label>
+
+
+                <div class='formulaireLesChamps' id='frmradiorepas'>
+
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel">Titre  :</p>
+                        <input type="text" size="120" name="titm" placeholder="un titre pour ce menu" class="pachamp" value="<?php echo $titre; ?>">
+                    </div>
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel">Entrée :</p>
+                        <input type="text" size="120" name="ent" placeholder="liste des entrées" class="pachamp" value="<?php echo $entree; ?>"> 
+                    </div>
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel">Plat :</p>
+                        <input type="text" size="120" name="plat" placeholder="liste des plats" class="pachamp" value="<?php echo $plat; ?>">
+                    </div>  
+                    <div class='formulaireLigneChamp'>                
+                        <p class="palibel">Laitage :</p>
+                        <input type="text" size="120" name="lait"  class="pachamp" value="<?php echo $lait; ?>">
+                    </div>
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel">Dessert :</p>
+                        <input type="text" size="120" name="des" placeholder="liste des desserts" class="pachamp" value="<?php echo $dessert; ?>"> 
+                    </div>
                 </div>
             </div>
         </div>
         </section>
-        <section class='formulaireBoutonRadio'>
+        <section class='formulaireBoutonRadio' >
             <div class='formulaireLigneRadio'>
-                <input type = "radio" name = "message" value = "message"  <?php echo $chkmess; ?> /> 
-                <p class="palibel2">Message</p>
-            </div>
-            <div class='formulaireLesChamps'>
+                <input type = "radio" name = "message" value = "message" id="radiomessage" <?php echo $chkmess; ?> />
+                <label for="radiomessage">Message</label>
+                <div class='formulaireLesChamps' id='frmradiomessage'>
 
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel2">Texte principal :</p>
-                    <input type="text" size="114" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
-                </div>
-                <div class='formulaireLigneChamp'>
-                    <p class="palibel2">Commentaire :</p>
-                    <input type="text" size="114" name="mes2" placeholder="un complément d'information" value="<?php echo $message; ?>">
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel2">Texte principal :</p>
+                        <input type="text" size="114" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
+                    </div>
+                    <div class='formulaireLigneChamp'>
+                        <p class="palibel2">Commentaire :</p>
+                        <input type="text" size="114" name="mes2" placeholder="un complément d'information" value="<?php echo $message; ?>">
+                    </div>
                 </div>
             </div>
         </section>
@@ -116,7 +119,7 @@ class V_Repas {
 
     public function afficherRepas($bg, $i) {
         ?>
-        <section class='unecase <?php echo $bg." num".$i; ?>' >
+        <section class='unecase <?php echo $bg . " num" . $i; ?>' >
             <section class="boite <?php echo $this->getRepas()->getTypeCase() ?>">
 
                 <?php

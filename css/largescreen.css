@@ -109,7 +109,7 @@ cette ligne est répétée 5 fois */
 /* formulaire de saisie des menus */
 .dateFormulaireSaisie {
     font-size : 1.4em;
-    margin: 5px 5px 0px 5px;
+    margin: 5px 5px 20px 05px;
 }
 
 .formulaireSaisie {
@@ -122,17 +122,32 @@ cette ligne est répétée 5 fois */
     height: 80%;
 }
 
+
 .formulaireBoutonRadio {
     display : flex;
     flex-direction : column;
     justify-content: flex-start;
 }
 
+/* gère la coloration du formulaire en fonction de la case cochée */
+#radiorepas:checked,
+#radiomessage:checked,
+#radiorepas:checked ~  #frmradiorepas,
+#radiomessage:checked ~ #frmradiomessage,
+#radiorepas:checked ~ label,
+#radiomessage:checked ~ label {
+    background-color:  #dadada;
+}
+
+.formulaireLigneRadio>label {
+    width: 100px;
+}
+
 .formulaireLesChamps {
     display : flex;
     flex-direction : column;
     justify-content:  center;
-    margin-left: 80px;
+    padding-left: 40px;
 }
 .formulaireLigneChamp {
     display : flex;
