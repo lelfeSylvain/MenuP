@@ -92,21 +92,22 @@ class V_Repas {
                 <div class='formulaireLesChamps' id='frmradiomessage'>
 
                     <div class='formulaireLigneChamp'>
-                        <p class="palibel2">Texte principal :</p>
-                        <input type="text" size="114" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
+                        <p class="palibel2">Texte principal<exp>*</exp>:</p>
+                        <input type="text" size="114" id="mesRequis" name="mes1" placeholder="jour férié par exemple"  value="<?php echo $titreMes; ?>">
                     </div>
                     <div class='formulaireLigneChamp'>
                         <p class="palibel2">Commentaire :</p>
                         <input type="text" size="114" name="mes2" placeholder="un complément d'information" value="<?php echo $message; ?>">
                     </div>
+                    <p><exp>*</exp> En cas de message, ce champ est obligatoire.</p>
                 </div>
             </div>
         </section>
 
         <!-- *************************les boutons ****************************** -->
-        <section class="formulaireBoutonValidation">
-            <input type="reset" value="Effacer" class="boutonValidation"/>
-            <input type="submit"  value="<?php echo $txtbtn; ?>" class="boutonValidation"/>
+        <section class="formulaireBoutonValidation"> 
+            <input type="reset" value="Effacer" class="boutonValidation" id="resetbutton"/> 
+            <input type="submit"  value="<?php echo $txtbtn; ?>" class="boutonValidation" />
         </section>
         <?php
     }
