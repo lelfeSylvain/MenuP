@@ -4,7 +4,7 @@ Connexion </div>
 <?php
 echo $texteNav;
 ?>
-<form method="post" action="index.php?uc=login" name='identification' class="formulaireLogin">
+<form method="post" action="index.php?uc=login&num=in" name='identification' class="formulaireLogin">
     <div class='formulaireLigneRadio'>               
         Pour se connecter :
     </div>

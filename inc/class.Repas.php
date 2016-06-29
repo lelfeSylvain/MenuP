@@ -56,10 +56,10 @@ class Repas {
                     $this->type = self::TYPEMESSAGE;
                 } elseif ($unRepas['type'] === self::TYPEREPAS and ! $this->estVide($unRepas)) {
                     $this->ligne[0] = $unRepas['titm'];
-                    $this->ligne[1] = $this->format($unRepas, 1, 3);
+                    $this->ligne[1] = $unRepas['ent'];
                     $this->ligne[2] = $unRepas['plat'];
                     $this->ligne[3] = $unRepas['lait'];
-                    $this->ligne[4] = $this->format($unRepas, 5, 8);
+                    $this->ligne[4] = $unRepas['des'];
                     $this->type = self::TYPEREPAS;
                 } else {// problème dans le type du message ou repas vide
                     $this->estCommunique = false;
@@ -136,21 +136,6 @@ class Repas {
         } else {
             return "";
         }
-    }
-
-    // permet de concaténer les entrees ou les desserts facilement
-    private function format($unRepas, $init, $max) {
-        $result = "";
-        for ($i = $init; $i < $max; $i++) {
-            if (!empty($unRepas[$i])) {
-                if (empty($result)) {
-                    $result = $unRepas[$i];
-                } else {
-                    $result.=" ou " . $unRepas[$i];
-                }
-            }
-        }
-        return $result;
     }
 
     public function getDes() {

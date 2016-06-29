@@ -45,11 +45,16 @@ elseif (!Session::isLogged()) {
                 include("controleurs/c_creation.php");
                 break;
             }
-
+        case 'creerUtil': // créer un nouvel utilisateur (seulement SUser)
+        case 'changer': {// uc modification du mot de passe
+                include("controleurs/c_changerMDP.php");
+                break;
+            }
+/* vieux chemin permettant de migrer la BD
         case 'convertir': {// conversion de la base
                 include("controleurs/c_conversion.php");
                 break;
-            }
+            }*/
         default :  // par défaut on consulte les posts
             include("controleurs/c_semaine.php");
     }

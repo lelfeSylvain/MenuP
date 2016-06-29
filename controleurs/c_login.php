@@ -1,9 +1,6 @@
 <?php
 $texteNav="";
-if ($num === 'out') {
-    logout();
-    $texteNav="Vous êtes déconnecté.".EOL;
-} else {// on ne se déconnecte pas, donc on se connecte
+if ($num === 'in') {// on se connecte
     $login = "";
     $mdp = "";
     
@@ -30,4 +27,8 @@ if ($num === 'out') {
         // première connexion
     }
 }
+else /*($num === 'out')*/ {
+    logout();
+    $texteNav="Vous êtes déconnecté.".EOL;
+} 
 include('vues/v_login.php');

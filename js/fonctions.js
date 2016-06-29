@@ -8,3 +8,14 @@ function doChallengeResponse() {
     document.identification.mot_de_passe.value = "";
 
 }
+
+/*
+ * analyse le nouveau mot de passe saisi 
+ * dans le formulaire chngerMDP
+ */
+function changerMDP() {
+    str = "f4G4k2#e33&" + document.identification.password.value;
+    document.identification.reponse.value = MD5(str);
+    document.identification.mot_de_passe.value = "";
+
+}

@@ -1,5 +1,6 @@
 <?php
-
+/*
+ * vieux controleur permettant de faire migrer la BD
 require_once 'vues/class.V_Repas.php';
 require_once 'inc/class.Semaine.php';
 
@@ -16,4 +17,4 @@ foreach ($lesRepas as $unRepas) {
     if ($exp !== $maSem->getAnneeSem())
         echo $exp . " -> " . $maSem->getAnneeSem() . " : " . $leRepas->getEnt() . '<br />';
     $res = $pdo->setLeRepas2($maSem,$unRepas['numserv'],$leRepas);
-}
+}*/
