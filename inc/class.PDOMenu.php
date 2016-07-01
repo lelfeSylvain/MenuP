@@ -351,4 +351,35 @@ class PDOMenu {
         $result = $sth->fetch();
         return $result["jour"];
     }
+    
+     /*
+      * Formulaire de changement de mot de passe
+     * Vérifie que l'e'ancien mot de passe saisi est le bon
+     */
+
+    public function verifierAncienMdP($pseudo,$mdp) {
+        $sql = "SELECT count(*) as nb FROM " . PdoMenu::$prefixe . "user where pseudo= ? and mdp=?";
+        $this->logSQL($sql." ".$pseudo." ".$mdp);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($pseudo,$mdp));
+        $result = $sth->fetch();
+        $this->logSQL($result['nb']);
+        return $result['nb'];
+    }
+    
+    /*
+     * Formulaire de changement de mot de passe
+     * modifie le mot de passe
+     */
+
+    public function setMdP($pseudo,$mdp,$ancien) {
+        //$jour = new DateTime();
+        $sql = "UPDATE " . PdoMenu::$prefixe . "user set mdp= ? where pseudo= ? and mdp=?";
+        $this->logSQL($sql.$pseudo." ".$mdp);
+        $sth = PdoMenu::$monPdo->prepare($sql);
+        $sth->execute(array($mdp,$pseudo,$ancien));
+        $result = $sth->fetch();
+        return $result;
+    }
+    
 }

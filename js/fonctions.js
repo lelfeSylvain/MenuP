@@ -10,19 +10,15 @@ function doChallengeResponse() {
 }
 
 /*
- * analyse le nouveau mot de passe saisi 
- * dans le formulaire chngerMDP
+ * converti le mot de passe saisi en mot de passe crypté
+ * dans le formulaire login
  */
-function changerMDP() {
-    var reponse =true;
-    var ancien =  document.identification.ancien.value;
-    var nouveau =  document.identification.nouveau.value;
-    var confirmation =  document.identification.confirmation.value;
-    var msg = document.getElementById('msg');
-    alert(ancien +" "+nouveau+" "+confirmation+' '+msg.innerHTML);
-    if (nouveau === confirmation) {} else {
-        msg.innerHTML += " Les deux mots de passe sont différents.";
-        reponse = false;
-    }
-    return reponse;
+function encodeMDPenMD5() {
+    var ancien = document.getElementById('ancien');
+    var nouveau = document.getElementById('nouveau');
+    var confirmation = document.getElementById('confirmation');
+    ancien.value = MD5("f4G4k2#e33&" +ancien.value);
+    nouveau.value = MD5("f4G4k2#e33&" +nouveau.value);
+    confirmation.value = MD5("f4G4k2#e33&" +confirmation.value);
+
 }
