@@ -106,7 +106,20 @@ cette ligne est répétée 5 fois */
     font-size : 1.4em;
 }
 
-/* formulaire de saisie des menus */
+/* tous les formulaires */
+.formulaire {
+    background-color:  grey;
+    color:black;
+    width: 60%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/************************************************************************
+formulaire de saisie des menus
+ ************************************************************************/
+
 .dateFormulaireSaisie {
     font-size : 1.4em;
     margin: 5px 5px 20px 05px;
@@ -209,6 +222,37 @@ cette ligne est répétée 5 fois */
 
 .boutonConnexion {
     margin-left: 10px;
+}
+
+/************************************************************************
+Formulaire changement de mot de passe
+ ************************************************************************/
+
+.formulaireLigneDesc {
+     margin:  3px 10px 0px 10px;
+}
+.large{
+    width: 200px;
+}
+
+#msg {
+    color:  brown;
+}
+
+.mrp {
+    margin-right: 10px;
+}
+
+.mrp:invalid {
+    background-color:  #aa6666;
+}
+
+.mrp:valid {
+    background-color:  #55aa55;
+}
+
+.boutonChanger {
+    margin-left: 450px;
 }
 /************************************************************************
 navigation du menu
